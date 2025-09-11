@@ -156,9 +156,7 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             app:backgroundTint="@android:color/transparent"
-            app:cornerRadius="12dp"
-            app:elevation="0dp"
-            app:strokeWidth="0dp" />
+            />
 
     </FrameLayout>
 
