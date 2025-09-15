@@ -2,53 +2,70 @@ package com.example.sgroupmobile2025.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.sgroupmobile2025.R
 import com.example.sgroupmobile2025.databinding.ActivityMainBinding
+import com.example.sgroupmobile2025.databinding.RegisterBinding
+import kotlin.toString
 
 class RegisterActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val binding by lazy { RegisterBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.register) // file register.xml
+        setContentView(binding.root)
+        initView()
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root){v,insets ->
+            val inset = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val layout = binding.tvBack.layoutParams
 
-        val edtEmail = findViewById<EditText>(R.id.edt_email)
-        val edtYourName = findViewById<EditText>(R.id.edt_you_name)
-        val edtPassWord = findViewById<EditText>(R.id.edt_pass_word)
-        val btnSignUp = findViewById<Button>(R.id.mtr_signup)
-        val tvback = findViewById<TextView>(R.id.tv_back)
-        btnSignUp.setOnClickListener {
-            val email = edtEmail.text.toString().trim()
-            val yourname = edtYourName.text.toString().trim()
-            val password = edtPassWord.text.toString().trim()
+            if(layout is ViewGroup.MarginLayoutParams){
+                layout.topMargin = inset.top
+            }
+            binding.tvBack.layoutParams = layout
 
-            if(email.isEmpty()){
-                edtEmail.error = "Thiếu email nè ní"
-                return@setOnClickListener
-            }
-            if(yourname.isEmpty()){
-                edtYourName.error = "Thiếu yourname nè ní"
-                return@setOnClickListener
-            }
-            if(password.isEmpty()){
-                edtPassWord.error = "Thiếu password nè ní"
-                return@setOnClickListener
-            }
-            Toast.makeText(this, "Chúc mừng ní nghen :))", Toast.LENGTH_SHORT).show()
+
+            WindowInsetsCompat.CONSUMED
         }
+    }
 
-        tvback.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+    private fun initView(){
+        binding.apply {
+            buttonContainer.setOnClickListener {
+                val email = edtEmail.text.toString().trim()
+                val yourname = edtYouName.text.toString().trim()
+                val password = edtPassWord.text.toString().trim()
+
+                if(email.isEmpty()){
+                    edtEmail.error = "Thiếu email nè ní"
+                    return@setOnClickListener
+                }
+                if(yourname.isEmpty()){
+                    edtYouName.error = "Thiếu yourname nè ní"
+                    return@setOnClickListener
+                }
+                if(password.isEmpty()){
+                    edtPassWord.error = "Thiếu password nè ní"
+                    return@setOnClickListener
+                }
+                Toast.makeText(this@RegisterActivity, "Chúc mừng ní nghen :)))", Toast.LENGTH_SHORT).show()
+
+            }
+
+            tvBack.setOnClickListener {
+                val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
-
-
     }
 }
+
