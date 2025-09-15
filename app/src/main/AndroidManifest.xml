@@ -13,7 +13,7 @@
         android:theme="@style/Theme.SgroupMobile2025">
         <activity
             android:name=".Register_Activity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.SgroupMobile2025">
             <intent-filter>
