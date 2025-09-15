@@ -16,11 +16,11 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(binding.root) // ✅ use binding root
+        setContentView(binding.root)
 
         // Back button
         binding.btnBack.setOnClickListener {
-            finish() // ✅ return to previous activity
+            finish()
         }
 
         // Submit button
