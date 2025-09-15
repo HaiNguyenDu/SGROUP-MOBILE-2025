@@ -6,6 +6,7 @@
     <dimen name="margin_small">10dp</dimen>
     <dimen name="margin_medium">15dp</dimen>
     <dimen name="margin_large">20dp</dimen>
+    <dimen name="minus_margin">-80dp</dimen>
 
     //padding
     <dimen name="padding_small">10dp</dimen>
@@ -26,5 +27,9 @@
     //card 
     <dimen name="card_width">280dp</dimen>
     <dimen name="card_height">55dp</dimen>
+    <dimen name="image_view_height">300dp</dimen>
+    <dimen name="image_view_margin_top">56dp</dimen>
+    <dimen name="margin_bottom">112dp</dimen>
+    <dimen name="icon_size">29dp</dimen>
 
 </resources>

@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/iv_user_bg"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/image_view_height"
         android:scaleType="centerCrop"
         android:src="@drawable/userbackground"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -18,15 +18,15 @@
         android:id="@+id/iv_bg"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_zero"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="@dimen/image_view_margin_top"
         android:src="@drawable/background"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_zero"
-        android:layout_marginTop="-80dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginTop="@dimen/minus_margin"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:src="@drawable/objectbackgrounds"
         app:layout_constraintTop_toTopOf="parent"/>
 

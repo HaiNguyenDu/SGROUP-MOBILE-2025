@@ -6,25 +6,26 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-    <Button
+    <ImageView
         android:id="@+id/btn_back"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginStart="@dimen/margin_large"
+        android:padding="5dp"
+        android:src="@drawable/ic_back"
+        android:background="@drawable/bg"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:icon="@drawable/ic_back"
-        app:cornerRadius="30dp"
-        android:background="@android:color/transparent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_user_bg"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
-        android:layout_marginTop="-10dp"
+        android:layout_marginTop="-30dp"
         android:scaleType="fitEnd"
         android:src="@drawable/bgsignup"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_bg"
@@ -32,7 +33,7 @@
         android:layout_height="@dimen/size_zero"
         android:layout_marginTop="@dimen/margin_largest"
         android:src="@drawable/background"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -46,14 +47,14 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-20dp"
+        android:layout_marginTop="@dimen/margin_large"
         android:text="@string/signup_title"
         android:textColor="@color/white"
         android:textSize="@dimen/text_large"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_user_bg"/>
+        app:layout_constraintTop_toBottomOf="@id/iv_user_bg" />
 
     <TextView
         android:id="@+id/tv_message"
@@ -63,7 +64,7 @@
         android:textSize="@dimen/text_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <TextView
         android:id="@+id/tv_email"
@@ -72,30 +73,30 @@
         android:layout_marginTop="@dimen/margin_medium"
         android:text="@string/email_address"
         app:layout_constraintStart_toStartOf="@id/cv_email"
-        app:layout_constraintTop_toBottomOf="@id/tv_message"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_message" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_email"
         android:layout_width="@dimen/card_width"
         android:layout_height="@dimen/card_height"
         android:layout_marginTop="@dimen/margin_small"
+        app:cardBackgroundColor="#17ffffff"
         app:cardCornerRadius="@dimen/radius"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_email"
-        app:cardBackgroundColor="#17ffffff"
-        app:cardElevation="0dp">
+        app:layout_constraintTop_toBottomOf="@id/tv_email">
 
         <EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:drawableStart="@drawable/ic_email"
             android:backgroundTint="@android:color/transparent"
+            android:drawableStart="@drawable/ic_email"
             android:drawablePadding="@dimen/padding_small"
-            android:padding="@dimen/padding_small"
             android:hint="@string/email_address"
-            android:textColor="@color/white"/>
+            android:padding="@dimen/padding_small"
+            android:textColor="@color/white" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -105,7 +106,7 @@
         android:layout_marginTop="@dimen/margin_medium"
         android:text="@string/name"
         app:layout_constraintStart_toStartOf="@id/cv_email"
-        app:layout_constraintTop_toBottomOf="@id/cv_email"/>
+        app:layout_constraintTop_toBottomOf="@id/cv_email" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_name"
@@ -114,10 +115,10 @@
         android:layout_marginTop="@dimen/margin_small"
         app:cardBackgroundColor="#17ffffff"
         app:cardCornerRadius="@dimen/radius"
+        app:cardElevation="@dimen/size_zero"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_name"
-        app:cardElevation="@dimen/size_zero">
+        app:layout_constraintTop_toBottomOf="@id/tv_name">
 
         <EditText
             android:id="@+id/et_name"
@@ -127,8 +128,8 @@
             android:drawableStart="@drawable/ic_user"
             android:drawablePadding="@dimen/padding_small"
             android:hint="@string/name"
-            android:padding="@dimen/padding_small"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:padding="@dimen/padding_small" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -138,7 +139,7 @@
         android:layout_marginTop="@dimen/margin_medium"
         android:text="@string/password"
         app:layout_constraintStart_toStartOf="@id/cv_email"
-        app:layout_constraintTop_toBottomOf="@id/cv_name"/>
+        app:layout_constraintTop_toBottomOf="@id/cv_name" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_pw"
@@ -147,10 +148,10 @@
         android:layout_marginTop="@dimen/margin_small"
         app:cardBackgroundColor="#17ffffff"
         app:cardCornerRadius="@dimen/radius"
+        app:cardElevation="@dimen/size_zero"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_pw"
-        app:cardElevation="@dimen/size_zero">
+        app:layout_constraintTop_toBottomOf="@id/tv_pw">
 
         <EditText
             android:id="@+id/et_pw"
@@ -161,8 +162,8 @@
             android:drawableEnd="@drawable/ic_hint"
             android:drawablePadding="@dimen/padding_small"
             android:hint="@string/password"
-            android:padding="@dimen/padding_small"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:padding="@dimen/padding_small" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -183,7 +184,7 @@
             android:text="@string/sign_up"
             android:textColor="@color/white"
             android:textSize="@dimen/text_mediumlarge"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -194,8 +195,7 @@
         android:text="@string/continue_with"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_submit">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@id/cv_submit"></TextView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -204,7 +204,7 @@
         android:layout_marginEnd="@dimen/margin_large"
         app:drawableStartCompat="@drawable/ic_google"
         app:layout_constraintEnd_toStartOf="@id/ic_fb"
-        app:layout_constraintTop_toBottomOf="@+id/tv_continue_with"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_continue_with" />
 
     <TextView
         android:id="@+id/ic_fb"
@@ -214,7 +214,7 @@
         app:drawableStartCompat="@drawable/ic_apple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_continue_with"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_continue_with" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -223,5 +223,5 @@
         android:layout_marginTop="@dimen/margin_small"
         app:drawableStartCompat="@drawable/ic_fb"
         app:layout_constraintStart_toEndOf="@id/ic_fb"
-        app:layout_constraintTop_toBottomOf="@+id/tv_continue_with"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_continue_with" />
 </androidx.constraintlayout.widget.ConstraintLayout>

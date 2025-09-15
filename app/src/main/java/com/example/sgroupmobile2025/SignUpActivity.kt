@@ -2,6 +2,7 @@ package com.example.sgroupmobile2025
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,19 +18,26 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
-
         // Back button
         binding.btnBack.setOnClickListener {
             finish()
         }
-
         // Submit button
         binding.cvSubmit.setOnClickListener {
             val noti = if (validateRegister()) "Sign up successful" else "Sign up failed"
             Toast.makeText(this, noti, Toast.LENGTH_SHORT).show()
         }
-    }
 
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val inset = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            val layout = binding.btnBack.layoutParams
+            if (layout is ViewGroup.MarginLayoutParams) {
+                layout.topMargin = inset.top
+            }
+            binding.btnBack.layoutParams = layout
+            WindowInsetsCompat.CONSUMED
+        }
+    }
     private fun validateRegister(): Boolean {
         val email = binding.etEmail.text.toString().trim()
         val pass = binding.etPw.text.toString().trim()
