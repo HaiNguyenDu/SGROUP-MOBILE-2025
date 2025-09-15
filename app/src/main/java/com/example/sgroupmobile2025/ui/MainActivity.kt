@@ -22,13 +22,11 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.login)
 
-        // Tìm nút trong layout login.xml
         val edtUsername = findViewById<EditText>(R.id.edtUsername)
         val edtPassword = findViewById<EditText>(R.id.edtpassword)
         val btnSignIn = findViewById<Button>(R.id.signin)
         val btnRegister = findViewById<Button>(R.id.register)
 
-        // Sự kiện bấm Sign In
         btnSignIn.setOnClickListener {
             val username = edtUsername.text.toString().trim()
             val password = edtPassword.text.toString().trim()
@@ -47,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // Sự kiện bấm Register
         btnRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)

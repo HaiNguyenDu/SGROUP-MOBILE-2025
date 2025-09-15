@@ -11,7 +11,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)  // liên kết với file login.xml
+        setContentView(R.layout.login)
 
     }
 }
