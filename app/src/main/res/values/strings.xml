@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">SgroupMobile2025</string>
+    <string name="started_get">Get Started Free</string>
+    <string name="free_forrver">Free Forever. No Credit Card Needed</string>
+    <string name="your_name_email">yourname@gmail.com</string>
+    <string name="email_adress">Email Adress</string>
+    <string name="your_name1">Your Name</string>
+    <string name="your_name">"@"yourname</string>
+    <string name="pass_word">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="text_01">Or continue with</string>
+    <string name="tv_register">Register</string>
+    <string name="tv_back">back</string>
 </resources>
