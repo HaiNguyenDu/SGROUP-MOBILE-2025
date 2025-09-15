@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    Login-->
+    <dimen name="login_background_width">432dp</dimen>
+    <dimen name="login_background_height">393dp</dimen>
+    <dimen name="margin_background_bottom">140dp</dimen>
+    <dimen name="margin_top_title1">280dp</dimen>
+    <dimen name="text_size_title1">40.33sp</dimen>
+    <dimen name="text_size_title2">14.33sp</dimen>
+    <dimen name="text_size_title_user">14.33sp</dimen>
+    <dimen name="padding_start_box1_username">40dp</dimen>
+    <dimen name="text_size_box1_username">16sp</dimen>
+    <dimen name="text_size_title_password">14.33sp</dimen>
+
+<!--    Register-->
+    <dimen name="register_background_width">337.99dp</dimen>
+    <dimen name="register_background_height">238dp</dimen>
+    <dimen name="register_round_width">40.15780582828932dp</dimen>
+    <dimen name="register_round_height">39.84455052266299dp</dimen>
+    <dimen name="text_size_box">14.33sp</dimen>
+</resources>
