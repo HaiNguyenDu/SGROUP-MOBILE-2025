@@ -26,7 +26,6 @@ class LoginActivity : AppCompatActivity() {
         binding.tvSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
-            finish() // finish login activity so user can't go back here
         }
     }
 
