@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/iv_user_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/image_view_height"
+        android:scaleType="centerCrop"
+        android:src="@drawable/userbackground"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_zero"
+        android:layout_marginTop="@dimen/image_view_margin_top"
+        android:src="@drawable/background"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_zero"
+        android:layout_marginTop="@dimen/minus_margin"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:src="@drawable/objectbackgrounds"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-30dp"
+        android:text="@string/welcome_title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_user_bg"/>
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_message"
+        android:textSize="@dimen/text_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"/>
+
+    <TextView
+        android:id="@+id/tv_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="@string/user_name"
+        app:layout_constraintStart_toStartOf="@id/cv_username"
+        app:layout_constraintTop_toBottomOf="@id/tv_message"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_username"
+        android:layout_width="@dimen/card_width"
+        android:layout_height="@dimen/card_height"
+        android:layout_marginTop="@dimen/margin_small"
+        app:cardCornerRadius="@dimen/radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_user"
+        app:cardBackgroundColor="#17ffffff"
+        app:cardElevation="0dp">
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/ic_user"
+            android:backgroundTint="@android:color/transparent"
+            android:drawablePadding="@dimen/padding_small"
+            android:padding="@dimen/padding_small"
+            android:hint="@string/user_name"
+            android:textColor="@color/white"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="@string/password"
+        app:layout_constraintStart_toStartOf="@id/cv_pw"
+        app:layout_constraintTop_toBottomOf="@id/cv_username"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_pw"
+        android:layout_width="@dimen/card_width"
+        android:layout_height="@dimen/card_height"
+        android:layout_marginTop="@dimen/margin_small"
+        app:cardBackgroundColor="#17ffffff"
+        app:cardCornerRadius="@dimen/radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_pw"
+        app:cardElevation="@dimen/size_zero">
+
+        <EditText
+            android:id="@+id/et_pw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_key"
+            android:drawableEnd="@drawable/ic_hint"
+            android:drawablePadding="@dimen/padding_small"
+            android:hint="@string/password"
+            android:padding="@dimen/padding_small"
+            android:inputType="textPassword"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/sign_up"
+        android:layout_marginHorizontal="3dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_or"
+        app:layout_constraintTop_toBottomOf="@id/cv_pw"/>
+
+    <TextView
+        android:id="@+id/tv_or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/or"
+        app:layout_constraintEnd_toStartOf="@+id/tv_forgot"
+        android:layout_marginHorizontal="3dp"
+        app:layout_constraintTop_toBottomOf="@id/cv_pw"/>
+
+    <TextView
+        android:id="@+id/tv_forgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/forgor_pass"
+        app:layout_constraintEnd_toEndOf="@id/cv_pw"
+        app:layout_constraintTop_toBottomOf="@id/cv_pw"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_submit"
+        android:layout_width="@dimen/card_width"
+        android:layout_height="@dimen/card_height"
+        android:layout_marginTop="@dimen/margin_small"
+        app:cardBackgroundColor="#9C3FE2"
+        app:cardCornerRadius="@dimen/radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_forgot">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/sign_in"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_mediumlarge"
+            android:textStyle="bold"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_continue_with"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:text="@string/continue_with"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_submit">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_large"
+        app:drawableStartCompat="@drawable/ic_google"
+        app:layout_constraintEnd_toStartOf="@id/ic_fb"
+        app:layout_constraintTop_toBottomOf="@+id/tv_continue_with"/>
+
+    <TextView
+        android:id="@+id/ic_fb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        app:drawableStartCompat="@drawable/ic_apple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_continue_with"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_small"
+        app:drawableStartCompat="@drawable/ic_fb"
+        app:layout_constraintStart_toEndOf="@id/ic_fb"
+        app:layout_constraintTop_toBottomOf="@+id/tv_continue_with"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

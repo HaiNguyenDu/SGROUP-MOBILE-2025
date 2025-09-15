@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    //margin
+    <dimen name="margin_largest">50dp</dimen>
+    <dimen name="margin_small">10dp</dimen>
+    <dimen name="margin_medium">15dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="minus_margin">-80dp</dimen>
+
+    //padding
+    <dimen name="padding_small">10dp</dimen>
+    <dimen name="padding_medium">15dp</dimen>
+
+    //0dp
+    <dimen name="size_zero">0dp</dimen>
+    
+    //text size    
+    <dimen name="text_small"></dimen>
+    <dimen name="text_large">40sp</dimen>
+    <dimen name="text_medium">15sp</dimen>
+    <dimen name="text_mediumlarge">18sp</dimen>
+    
+    //corner
+    <dimen name="radius">10dp</dimen>
+
+    //card 
+    <dimen name="card_width">280dp</dimen>
+    <dimen name="card_height">55dp</dimen>
+    <dimen name="image_view_height">300dp</dimen>
+    <dimen name="image_view_margin_top">56dp</dimen>
+    <dimen name="margin_bottom">112dp</dimen>
+    <dimen name="icon_size">29dp</dimen>
+
+</resources>
