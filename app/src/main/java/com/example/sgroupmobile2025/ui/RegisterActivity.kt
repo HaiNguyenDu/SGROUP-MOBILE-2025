@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.sgroupmobile2025.R
 import com.example.sgroupmobile2025.databinding.ActivityMainBinding
 import com.example.sgroupmobile2025.databinding.RegisterBinding
@@ -22,7 +23,8 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        initView()
+        registerView()
+        initUi()
         ViewCompat.setOnApplyWindowInsetsListener(binding.root){v,insets ->
             val inset = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val layout = binding.tvBack.layoutParams
@@ -35,9 +37,34 @@ class RegisterActivity : AppCompatActivity() {
 
             WindowInsetsCompat.CONSUMED
         }
+
+
     }
 
-    private fun initView(){
+
+    private fun initUi(){
+        binding.apply {
+            val isEmulator = (android.os.Build.FINGERPRINT.startsWith("generic")
+                    || android.os.Build.MODEL.contains("google_sdk")
+                    || android.os.Build.MODEL.lowercase().contains("emulator")
+                    || android.os.Build.MODEL.contains("Android SDK built for x86"))
+
+            val imageRes = if (isEmulator) {
+                R.drawable.user
+            } else {
+                R.drawable.av_main2
+            }
+
+            // Load ảnh bằng Glide
+            Glide.with(this@RegisterActivity)
+                .load(imageRes)
+                .placeholder(R.drawable.user)
+                .error(R.drawable.av_main2)
+                .into(binding.ivMain2)
+        }
+    }
+
+    private fun registerView(){
         binding.apply {
             buttonContainer.setOnClickListener {
                 val email = edtEmail.text.toString().trim()
@@ -59,10 +86,7 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this@RegisterActivity, "Chúc mừng ní nghen :)))", Toast.LENGTH_SHORT).show()
 
             }
-
             tvBack.setOnClickListener {
-                val intent = Intent(this@RegisterActivity, MainActivity::class.java)
-                startActivity(intent)
                 finish()
             }
         }
