@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">SgroupMobile2025</string>
+    <!--    Login-->
+    <string name="text_title1">Welcome Back!</string>
+    <string name="text_title2">welcome back we missed you</string>
+    <string name="title_user">Username</string>
+    <string name="hint_username">Username</string>
+    <string name="text_title_password">Password</string>
+    <string name="text_title_forgotpass">Forgot Password?</string>
+    <string name="text_sign_in">Sign in</string>
+    <string name="text_sign_up">Sign up</string>
+    <string name="text_continue">Or continue with</string>
+
+    <!--    Register-->
+    <string name="text_title_register_1">Get Started Free</string>
+    <string name="text_title_register_2">Free Forever. No Credit Card Needed</string>
+    <string name="text_title_email_register">Email Address</string>
+    <string name="hint_email_address">yourname@gmail.com</string>
+    <string name="text_title_name">Your Name</string>
+    <string name="hint_your_name">yourname</string>
+    <string name="hint_pass">********</string>
+    <string name="sign_up_with">Or sign up with</string>
+    <string name="title_activity_register">Register_Activity</string>
+    <string name="button_back">Back</string>
 </resources>
