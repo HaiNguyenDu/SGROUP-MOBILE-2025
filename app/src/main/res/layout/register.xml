@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20dp"
+        android:drawableStart="@drawable/back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/iv_main2"
+        android:layout_width="@dimen/dp_338dp"
+        android:layout_height="@dimen/dp_238dp"
+        android:src="@drawable/av_main2"
+        android:layout_marginStart="@dimen/dp_130dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cs_register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:layout_marginTop="@dimen/dp_120dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_tt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/started_get"
+        android:textSize="@dimen/started_free"
+        android:textColor="@color/white_nhat"
+        app:layout_constraintStart_toStartOf="@id/cs_register"
+        app:layout_constraintEnd_toEndOf="@id/cs_register"
+        app:layout_constraintTop_toTopOf="@id/cs_register"
+        android:layout_marginTop="@dimen/dp_150dp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/tv_tt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/free_forrver"
+        android:textSize="@dimen/free_forever"
+        android:textColor="@color/Xam_nhe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tt1"
+        />
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_adress"
+        android:textSize="@dimen/free_forever"
+        app:layout_constraintStart_toStartOf="@+id/edt_email"
+        app:layout_constraintBottom_toTopOf="@id/edt_email"
+        android:layout_marginBottom="@dimen/dp_9dp"
+        android:textColor="@color/Xam_nhe"
+        />
+
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="@dimen/dp_314dp"
+        android:layout_height="@dimen/dp_55dp"
+        android:layout_margin="@dimen/dp_60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_tt2"
+        android:background="@drawable/gradian_box"
+        android:drawableStart="@drawable/ic_email"
+        android:hint="@string/your_name_email"
+        android:textColorHint="@color/Xam_nhe"
+        android:paddingStart="@dimen/dp_20dp"
+        android:drawablePadding="@dimen/dp_20dp"
+        />
+    <TextView
+        android:id="@+id/tv_you_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_name1"
+        android:textSize="@dimen/free_forever"
+        app:layout_constraintStart_toStartOf="@id/edt_you_name"
+        app:layout_constraintBottom_toTopOf="@id/edt_you_name"
+        android:layout_marginBottom="@dimen/dp_9dp"
+        android:textColor="@color/Xam_nhe"
+        />
+    <EditText
+        android:id="@+id/edt_you_name"
+        android:layout_width="@dimen/dp_314dp"
+        android:layout_height="@dimen/dp_55dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_email"
+        android:background="@drawable/gradian_box"
+        android:layout_marginTop="@dimen/dp_40dp"
+        android:drawableStart="@drawable/ic_user"
+        android:hint="@string/your_name"
+        android:textColorHint="@color/Xam_nhe"
+        android:paddingStart="@dimen/dp_20dp"
+        android:drawablePadding="@dimen/dp_20dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_pass_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pass_word"
+        android:textSize="@dimen/free_forever"
+        android:textColor="@color/Xam_nhe"
+        app:layout_constraintStart_toStartOf="@+id/edt_pass_word"
+        app:layout_constraintBottom_toTopOf="@+id/edt_pass_word"
+        android:layout_marginBottom="@dimen/dp_9dp"
+        />
+
+    <EditText
+        android:id="@+id/edt_pass_word"
+        android:layout_width="@dimen/dp_314dp"
+        android:layout_height="@dimen/dp_55dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_you_name"
+        android:layout_marginTop="@dimen/dp_40dp"
+        android:background="@drawable/gradian_box"
+        android:hint="@string/pass_word"
+        android:inputType="textPassword"
+        android:drawableStart="@drawable/ic_login"
+        android:textColorHint="@color/Xam_nhe"
+        android:paddingStart="@dimen/sp_18sp"
+        android:drawablePadding="@dimen/dp_20dp"
+        />
+
+
+    <FrameLayout
+        android:id="@+id/button_container"
+        android:layout_width="@dimen/dp_314dp"
+        android:layout_height="@dimen/dp_55dp"
+        android:layout_margin="@dimen/dp_30dp"
+        android:background="@drawable/gradian_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_pass_word">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mtr_signup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:text="@string/sign_up"
+            android:textSize="@dimen/sp_18sp"
+            app:backgroundTint="@android:color/transparent" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12dp"
+        android:drawableStart="@drawable/gachtrang"
+        android:drawableEnd="@drawable/gachtrang"
+        android:drawablePadding="10dp"
+        android:text="@string/text_01"
+        android:textColor="@color/Xam_nhe"
+        android:textSize="@dimen/sp_16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_container"
+        />
+
+    <LinearLayout
+        android:id="@+id/buttongroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_google"
+            android:layout_width="@dimen/dp_70dp"
+            android:layout_height="@dimen/dp_60dp"
+            android:layout_marginEnd="@dimen/dp_16dp"
+            app:cardBackgroundColor="#2C2C2E"
+            app:cardCornerRadius="@dimen/dp_12dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp_16dp"
+                android:src="@drawable/img" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardapple"
+            android:layout_width="@dimen/dp_70dp"
+            android:layout_height="@dimen/dp_60dp"
+            android:layout_marginEnd="@dimen/dp_16dp"
+            app:cardBackgroundColor="#2C2C2E"
+            app:cardCornerRadius="@dimen/dp_12dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp_15dp"
+                android:src="@drawable/img_1" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardfacebook"
+            android:layout_width="@dimen/dp_70dp"
+            android:layout_height="@dimen/dp_60dp"
+            app:cardBackgroundColor="#2C2C2E"
+            app:cardCornerRadius="@dimen/dp_12dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp_15dp"
+                android:src="@drawable/img_4" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
