@@ -38,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
 
         if (inputUser == userName && inputPass == passWord) {
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ProductActivity::class.java)
+            startActivity(intent)
         } else {
             Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
         }

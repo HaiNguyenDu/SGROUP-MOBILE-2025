@@ -72,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_user"
         app:cardBackgroundColor="#17ffffff"
-        app:cardElevation="0dp">
+        app:cardElevation="@dimen/size_zero">
 
         <EditText
             android:id="@+id/et_username"
