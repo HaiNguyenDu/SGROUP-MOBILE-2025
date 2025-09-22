@@ -31,7 +31,6 @@ class ProductActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         binding.rcv.layoutManager = GridLayoutManager(this, 2)
-        binding.rcv.setHasFixedSize(true) // Tối ưu hiệu năng
         binding.rcv.adapter = ProductAdapter(createProductList())
     }
 
