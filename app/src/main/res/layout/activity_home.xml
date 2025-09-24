@@ -52,7 +52,8 @@
             android:layout_height="wrap_content"
             android:text="@string/tv_sneakers"
             android:textSize="@dimen/sp_30sp"
-            android:textStyle="bold"/>
+            android:fontFamily="@font/font2_montserrat"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/tv_Count"

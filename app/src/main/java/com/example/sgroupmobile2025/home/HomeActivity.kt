@@ -1,6 +1,5 @@
 package com.example.sgroupmobile2025.home
 
-import ImageAdapter
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,25 +24,78 @@ class HomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
     }
 
     private fun setupUi() {
         val listProduct = listOf(
-            Product(R.drawable.nike, "Nike", "Air Force 1 Jester XX Black Sonic Yellow...", "96$"),
-            Product(R.drawable.air1, "Converse", "Run Star Hike Three Color Unisex", "85.5$"),
-            Product(R.drawable.nikecolor, "Nike", "Air Jordan 1 Retro High Obsidian UNC", "196$"),
-            Product(R.drawable.converse, "converse", "Air Force 1 Shadow Beige Pale Ivory", "115$"),
-            Product(R.drawable.nike, "Nike", "Air Force 1 Jester XX Black Sonic Yellow...", "96$"),
-            Product(R.drawable.air1, "Converse", "Run Star Hike Three Color Unisex", "85.5$"),
-            Product(R.drawable.nikecolor, "Nike", "Air Jordan 1 Retro High Obsidian UNC", "196$"),
-            Product(R.drawable.converse, "converse", "Air Force 1 Shadow Beige Pale Ivory", "115$")
+            Product(
+                "Nike",
+                "96$",
+                "Air Force 1 Jester XX Black Sonic Yellow...",
+                R.drawable.nike,
+                listOf(R.drawable.nike, R.drawable.air1, R.drawable.nikecolor),
+                listOf("36", "37", "38", "39","40","41","42","43","44")
+            ),
+            Product(
+                "Converse",
+                "85.5$",
+                "Run Star Hike Three Color Unisex",
+                R.drawable.air1,
+                listOf(R.drawable.air1, R.drawable.converse, R.drawable.nike),
+                listOf("36", "37", "38", "39","40","41","42","43","44")
+            ),
+            Product(
+                "Nike",
+                "196$",
+                "Air Jordan 1 Retro High Obsidian UNC",
+                R.drawable.nikecolor,
+                listOf(R.drawable.nikecolor, R.drawable.nike, R.drawable.air1),
+                listOf("36", "37", "38", "39","40","41","42","43","44")
+            ),
+            Product(
+                "Converse",
+                "115$",
+                "Air Force 1 Shadow Beige Pale Ivory",
+                R.drawable.converse,
+                listOf(R.drawable.converse, R.drawable.air1, R.drawable.nikecolor),
+                listOf("36", "37", "38", "39","40","41","42","43","44")
+            ),
+            Product(
+                "Nike",
+                "96$",
+                "Air Force 1 Jester XX Black Sonic Yellow...",
+                R.drawable.nike,
+                listOf(R.drawable.nike, R.drawable.air1, R.drawable.nikecolor),
+                listOf("36", "37", "38", "39","40","41","42","43","44")
+            ),
+            Product(
+                "Converse",
+                "85.5$",
+                "Run Star Hike Three Color Unisex",
+                R.drawable.air1,
+                listOf(R.drawable.air1, R.drawable.converse, R.drawable.nike),
+                listOf("36", "37", "38", "39","40","41","42","43","44")
+            ),
+            Product(
+                "Nike",
+                "196$",
+                "Air Jordan 1 Retro High Obsidian UNC",
+                R.drawable.nikecolor,
+                listOf(R.drawable.nikecolor, R.drawable.nike, R.drawable.air1),
+                listOf("36", "37", "38", "39","40","41","42","43","44")
+            ),
+            Product(
+                "Converse",
+                "115$",
+                "Air Force 1 Shadow Beige Pale Ivory",
+                R.drawable.converse,
+                listOf(R.drawable.converse, R.drawable.air1, R.drawable.nikecolor),
+                listOf("36", "37", "38", "39","40","41","42","43","44")
+            )
         )
 
         val adapter = ImageAdapter(this, listProduct)
         binding.recyclerViewProducts.layoutManager = GridLayoutManager(this, 2)
         binding.recyclerViewProducts.adapter = adapter
     }
-
-
 }
