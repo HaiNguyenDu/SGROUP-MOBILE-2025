@@ -15,7 +15,7 @@ class GalleryAdapter(private val images: List<Int>) :
     }
 
     override fun onBindViewHolder(holder: GalleryViewHolder, position: Int) {
-        holder.binding.imgProduct.setImageResource(images[position])
+        holder.binding.imgSmall.setImageResource(images[position])
     }
 
     override fun getItemCount(): Int = images.size

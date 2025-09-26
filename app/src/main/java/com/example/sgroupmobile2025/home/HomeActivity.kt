@@ -29,68 +29,67 @@ class HomeActivity : AppCompatActivity() {
     private fun setupUi() {
         val listProduct = listOf(
             Product(
-                "Nike",
-                "96$",
-                "Air Force 1 Jester XX Black Sonic Yellow...",
-                R.drawable.nike,
-                listOf(R.drawable.nike, R.drawable.air1, R.drawable.nikecolor),
-                listOf("36", "37", "38", "39","40","41","42","43","44")
+                name = "Nike",
+                price = "96$",
+                image = R.drawable.nike,
+                shortDescription = "Air Force 1 Jester XX Black Sonic Yellow...",
+                longDescription = "These aren't just shoes; they're a statement of effortless style. The classic white sneakers are crafted from supple, high-quality leather that feels soft and supportive from the moment you slip them on. Their design is wonderfully minimalist, featuring clean lines and only the slightest hint of texture near the heel. They possess a remarkable versatility, ...",
+                gallery = listOf(R.drawable.detail_jodan_1, R.drawable.air1, R.drawable.balen, R.drawable.balen1, R.drawable.nikecolor, R.drawable.converse, R.drawable.nike, R.drawable.adidas),
+                sizes = listOf("37", "38", "39","40","41","42","43","44")
             ),
             Product(
-                "Converse",
-                "85.5$",
-                "Run Star Hike Three Color Unisex",
-                R.drawable.air1,
-                listOf(R.drawable.air1, R.drawable.converse, R.drawable.nike),
-                listOf("36", "37", "38", "39","40","41","42","43","44")
+                name = "Balen Track",
+                price = "85.5$",
+                image = R.drawable.balen,
+                shortDescription = "Run Star Hike Three Color Unisex",
+                longDescription = "These aren't just shoes; they're a statement of effortless style. The classic white sneakers are crafted from supple, high-quality leather that feels soft and supportive from the moment you slip them on. Their design is wonderfully minimalist, featuring clean lines and only the slightest hint of texture near the heel. They possess a remarkable versatility, ...",
+                gallery = listOf(R.drawable.detail_balen1, R.drawable.detail_balen11, R.drawable.detail_balen_12, R.drawable.detail_balen_13, R.drawable.detail_balen_12, R.drawable.detail_balen_13),
+                sizes = listOf("37", "38", "39","40","41","42","43","44")
             ),
             Product(
-                "Nike",
-                "196$",
-                "Air Jordan 1 Retro High Obsidian UNC",
-                R.drawable.nikecolor,
-                listOf(R.drawable.nikecolor, R.drawable.nike, R.drawable.air1),
-                listOf("36", "37", "38", "39","40","41","42","43","44")
+                name = "Nike",
+                price = "196$",
+                image = R.drawable.nikecolor,
+                shortDescription = "Air Jordan 1 Retro High Obsidian UNC",
+                longDescription = "These aren't just shoes; they're a statement of effortless style. The classic white sneakers are crafted from supple, high-quality leather that feels soft and supportive from the moment you slip them on. Their design is wonderfully minimalist, featuring clean lines and only the slightest hint of texture near the heel. They possess a remarkable versatility, ...",
+                gallery = listOf(R.drawable.nike, R.drawable.air1, R.drawable.balen, R.drawable.balen1, R.drawable.nikecolor, R.drawable.converse, R.drawable.nike, R.drawable.adidas),
+                sizes = listOf("37", "38", "39","40","41","42","43","44")
             ),
             Product(
-                "Converse",
-                "115$",
-                "Air Force 1 Shadow Beige Pale Ivory",
-                R.drawable.converse,
-                listOf(R.drawable.converse, R.drawable.air1, R.drawable.nikecolor),
-                listOf("36", "37", "38", "39","40","41","42","43","44")
+                name = "Converse",
+                price = "115$",
+                image = R.drawable.converse,
+                shortDescription = "Air Force 1 Shadow Beige Pale Ivory",
+                longDescription = "These aren't just shoes; they're a statement of effortless style. The classic white sneakers are crafted from supple, high-quality leather that feels soft and supportive from the moment you slip them on. Their design is wonderfully minimalist, featuring clean lines and only the slightest hint of texture near the heel. They possess a remarkable versatility, ...",
+                gallery = listOf(R.drawable.nike, R.drawable.air1, R.drawable.balen, R.drawable.balen1, R.drawable.nikecolor, R.drawable.converse, R.drawable.nike, R.drawable.adidas),
+                sizes = listOf("37", "38", "39","40","41","42","43","44")
             ),
             Product(
-                "Nike",
-                "96$",
-                "Air Force 1 Jester XX Black Sonic Yellow...",
-                R.drawable.nike,
-                listOf(R.drawable.nike, R.drawable.air1, R.drawable.nikecolor),
-                listOf("36", "37", "38", "39","40","41","42","43","44")
+                name = "Nike",
+                price = "96$",
+                image = R.drawable.balen,
+                shortDescription = "Air Force 1 Jester XX Black Sonic Yellow...",
+                longDescription = "These aren't just shoes; they're a statement of effortless style. The classic white sneakers are crafted from supple, high-quality leather that feels soft and supportive from the moment you slip them on. Their design is wonderfully minimalist, featuring clean lines and only the slightest hint of texture near the heel. They possess a remarkable versatility, ...",
+                gallery = listOf(R.drawable.detail_balen1, R.drawable.detail_balen11, R.drawable.detail_balen_12, R.drawable.detail_balen_13, R.drawable.detail_balen_12, R.drawable.detail_balen_13),
+                sizes = listOf("37", "38", "39","40","41","42","43","44")
             ),
             Product(
-                "Converse",
-                "85.5$",
-                "Run Star Hike Three Color Unisex",
-                R.drawable.air1,
-                listOf(R.drawable.air1, R.drawable.converse, R.drawable.nike),
-                listOf("36", "37", "38", "39","40","41","42","43","44")
+                name = "Converse",
+                price = "85.5$",
+                image = R.drawable.adidas,
+                shortDescription = "Run Star Hike Three Color Unisex",
+                longDescription = "These aren't just shoes; they're a statement of effortless style. The classic white sneakers are crafted from supple, high-quality leather that feels soft and supportive from the moment you slip them on. Their design is wonderfully minimalist, featuring clean lines and only the slightest hint of texture near the heel. They possess a remarkable versatility, ...",
+                gallery = listOf(R.drawable.nike, R.drawable.air1, R.drawable.balen, R.drawable.balen1, R.drawable.nikecolor, R.drawable.converse, R.drawable.nike, R.drawable.adidas),
+                sizes = listOf("37", "38", "39","40","41","42","43","44")
             ),
             Product(
-                "Nike",
-                "196$",
-                "Air Jordan 1 Retro High Obsidian UNC",
-                R.drawable.nikecolor,
-                listOf(R.drawable.nikecolor, R.drawable.nike, R.drawable.air1),
-                listOf("36", "37", "38", "39","40","41","42","43","44")
-            ),
-            Product(
-                "Converse",
-                "115$",
-                "Air Force 1 Shadow Beige Pale Ivory",
-                R.drawable.converse,
-                listOf(R.drawable.converse, R.drawable.air1, R.drawable.nikecolor),
-                listOf("36", "37", "38", "39","40","41","42","43","44")
+                name = "Nike",
+                price = "196$",
+                image = R.drawable.nikecolor,
+                shortDescription = "Air Jordan 1 Retro High Obsidian UNC",
+                longDescription = "These aren't just shoes; they're a statement of effortless style. The classic white sneakers are crafted from supple, high-quality leather that feels soft and supportive from the moment you slip them on. Their design is wonderfully minimalist, featuring clean lines and only the slightest hint of texture near the heel. They possess a remarkable versatility, ...",
+                gallery = listOf(R.drawable.nike, R.drawable.air1, R.drawable.balen, R.drawable.balen1, R.drawable.nikecolor, R.drawable.converse, R.drawable.nike, R.drawable.adidas),
+                sizes = listOf("37", "38", "39","40","41","42","43","44")
             )
         )
 

@@ -6,7 +6,6 @@
     android:background="@android:color/white"
     tools:context=".detail.ProductDetailActivity">
 
-    <!-- Ảnh sản phẩm -->
     <ImageView
         android:id="@+id/imgProduct"
         android:layout_width="@dimen/dp_350dp"
@@ -15,119 +14,185 @@
         tools:src="@drawable/nike"
         app:layout_constraintTop_toBottomOf="@+id/btnBack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Nút Back -->
     <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/back"
-        android:scaleType="centerInside"
-        app:layout_constraintTop_toTopOf="@id/imgProduct"
-        app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/dp_25dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/outline_chevron_backward_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Nút Favorite -->
+
     <ImageButton
-        android:id="@+id/btnFavorite"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/heart_check"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@id/imgProduct"
-        app:layout_constraintEnd_toEndOf="parent" />
+            android:id="@+id/btnFavorite"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/dp_25dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/heart_favorite_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- RecyclerView Gallery dưới ảnh chính -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerGallery"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
+            android:layout_marginTop="@dimen/dp_35dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
         app:layout_constraintTop_toBottomOf="@id/imgProduct"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Nội dung chi tiết -->
+
     <LinearLayout
-        android:id="@+id/layoutContent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/recyclerGallery"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnAddToCart">
+            android:id="@+id/layoutContent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@id/recyclerGallery"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnAddToCart">
 
         <!-- Tên + Giá -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/dp_10dp">
 
             <TextView
-                android:id="@+id/txtName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tên sản phẩm"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                    android:id="@+id/txtName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/txtPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$115"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black" />
+                    android:id="@+id/txtPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black" />
         </LinearLayout>
 
-        <!-- Mô tả -->
+        <!-- Mô tả ngắn -->
         <TextView
-            android:id="@+id/txtDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:paddingBottom="16dp"/>
+                android:id="@+id/txtShortDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingBottom="4dp"/>
 
-        <!-- Size -->
+        <!-- Gạch ngang sau mô tả ngắn -->
+        <View
+                android:id="@+id/viewDividerShortDesc"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="4dp"/>
+
+        <!-- Mô tả dài (mặc định ẩn) -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Size"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:paddingBottom="4dp" />
+                android:id="@+id/txtLongDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:scrollHorizontally="false"
+                android:lineSpacingExtra="4dp"
+                android:paddingBottom="4dp"/>
+
+
+
+        <!-- Nút Read more / Read less nằm dưới mô tả dài -->
+        <TextView
+                android:id="@+id/txtReadMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Read more"
+                android:textSize="14sp"
+                android:textColor="@android:color/holo_blue_dark"
+                android:paddingBottom="8dp"/>
+
+        <!-- Gạch ngang ngăn cách mô tả dài với size -->
+        <View
+                android:id="@+id/viewDividerAfterLongDesc"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="8dp"/>
+
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp">
+
+            <TextView
+                    android:id="@+id/tv_size"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Size"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:ellipsize="none"
+                    android:singleLine="true"/>
+
+            <TextView
+                    android:id="@+id/tv_ukus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EUR UK US"
+                    android:textSize="16sp"
+                    android:singleLine="true"/>
+        </LinearLayout>
+
+
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerSizes"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            android:overScrollMode="never" />
+                android:id="@+id/recyclerSizes"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:overScrollMode="never"/>
 
     </LinearLayout>
 
-    <!-- Button Add to Cart (cố định dưới cùng) -->
+
     <Button
         android:id="@+id/btnAddToCart"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dp_350dp"
         android:layout_height="60dp"
-        android:text="ADD TO CART"
+        android:text="@string/btn_addtocart"
         android:textStyle="bold"
         android:backgroundTint="@android:color/black"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/dp_40dp"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

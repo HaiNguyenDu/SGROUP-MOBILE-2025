@@ -18,4 +18,6 @@
     <string name="tv_nike">Nike</string>
     <string name="tv_titlegiay">Air Force 1</string>
     <string name="tv_gia">96$</string>
+    <string name="btn_addtocart">ADD TO CART</string>
+    <string name="tv_size">Size</string>
 </resources>
