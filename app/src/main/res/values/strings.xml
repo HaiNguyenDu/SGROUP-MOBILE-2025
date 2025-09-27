@@ -12,4 +12,14 @@
     <string name="text_01">Or continue with</string>
     <string name="tv_register">Register</string>
     <string name="tv_back">back</string>
+    <string name="edt_search">Search product</string>
+    <string name="tv_sneakers">Sneaker</string>
+    <string name="tv_count">25 products found</string>
+    <string name="tv_nike">Nike</string>
+    <string name="tv_titlegiay">Air Force 1</string>
+    <string name="tv_gia">96$</string>
+    <string name="btn_addtocart">ADD TO CART</string>
+    <string name="tv_size">Size</string>
+    <string name="tv_readmore">Read more</string>
+    <string name="tv_ukus">EUR UK US</string>
 </resources>

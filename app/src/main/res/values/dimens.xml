@@ -20,11 +20,26 @@
     <dimen name="dp_15dp">15dp</dimen>
     <dimen name="dp_25dp">25dp</dimen>
     <dimen name="dp_35dp">35dp</dimen>
+    <dimen name="dp_0dp">0dp</dimen>
+    <dimen name="dp_4dp">4dp</dimen>
+    <dimen name="dp_350dp">350dp</dimen>
+    <dimen name="dp_110dp">110dp</dimen>
+    <dimen name="dp_29dp">29dp</dimen>
+    <dimen name="dp_240dp">240dp</dimen>
+    <dimen name="dp_80dp">80dp</dimen>
+    <dimen name="dp_36dp">36dp</dimen>
+    <dimen name="dp_1dp">1dp</dimen>
+
+
+    <!--   SP -->
     <dimen name="started_free">40.33sp</dimen>
     <dimen name="free_forever">14.33sp</dimen>
     <dimen name="sp_12sp">12sp</dimen>
     <dimen name="sp_16sp">16sp</dimen>
     <dimen name="sp_20sp">20sp</dimen>
     <dimen name="sp_18sp">18sp</dimen>
+    <dimen name="sp_30sp">30sp</dimen>
+    <dimen name="sp_14sp">14sp</dimen>
+
 
 </resources>
