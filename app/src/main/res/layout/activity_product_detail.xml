@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imgProduct"
         android:layout_width="@dimen/dp_350dp"
-        android:layout_height="240dp"
+        android:layout_height="@dimen/dp_240dp"
         android:scaleType="centerCrop"
         tools:src="@drawable/nike"
         app:layout_constraintTop_toBottomOf="@+id/btnBack"
@@ -18,8 +18,8 @@
 
     <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/dp_40dp"
+            android:layout_height="@dimen/dp_40dp"
             android:layout_margin="@dimen/dp_25dp"
             android:background="@android:color/transparent"
             android:src="@drawable/outline_chevron_backward_24"
@@ -29,8 +29,8 @@
 
     <ImageButton
             android:id="@+id/btnFavorite"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/dp_40dp"
+            android:layout_height="@dimen/dp_40dp"
             android:layout_margin="@dimen/dp_25dp"
             android:background="@android:color/transparent"
             android:src="@drawable/heart_favorite_24"
@@ -40,10 +40,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerGallery"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
+        android:layout_width="@dimen/dp_0dp"
+        android:layout_height="@dimen/dp_80dp"
+        android:paddingStart="@dimen/dp_8dp"
+        android:paddingEnd="@dimen/dp_8dp"
             android:layout_marginTop="@dimen/dp_35dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
@@ -55,19 +55,19 @@
     <LinearLayout
             android:id="@+id/layoutContent"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dp_0dp"
             android:orientation="vertical"
-            android:padding="16dp"
+            android:padding="@dimen/dp_16dp"
             app:layout_constraintTop_toBottomOf="@id/recyclerGallery"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/btnAddToCart">
 
-        <!-- Tên + Giá -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:paddingVertical="@dimen/dp_10dp">
 
             <TextView
@@ -75,70 +75,83 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@android:color/black"/>
+                    android:textSize="@dimen/sp_20sp"
+                    android:textColor="@android:color/black" />
+
+            <ImageButton
+                    android:id="@+id/btnMinus"
+                    android:layout_width="@dimen/dp_36dp"
+                    android:layout_height="@dimen/dp_36dp"
+                    android:background="@drawable/bg_circle_button"
+                    android:src="@drawable/outline_arrow_left_24"
+                    android:scaleType="centerInside" />
 
             <TextView
                     android:id="@+id/txtPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_marginHorizontal="@dimen/dp_12dp"
                     android:textStyle="bold"
+                    android:textSize="@dimen/sp_18sp"
                     android:textColor="@android:color/black" />
+
+            <ImageButton
+                    android:id="@+id/btnPlus"
+                    android:layout_width="@dimen/dp_36dp"
+                    android:layout_height="@dimen/dp_36dp"
+                    android:background="@drawable/bg_circle_button"
+                    android:src="@drawable/outline_arrow_right_24"
+                    android:scaleType="centerInside" />
         </LinearLayout>
 
-        <!-- Mô tả ngắn -->
+
         <TextView
                 android:id="@+id/txtShortDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="@dimen/sp_14sp"
                 android:textColor="@android:color/black"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:paddingBottom="4dp"/>
+                android:paddingBottom="@dimen/dp_4dp"/>
 
-        <!-- Gạch ngang sau mô tả ngắn -->
         <View
                 android:id="@+id/viewDividerShortDesc"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/dp_1dp"
                 android:background="@android:color/darker_gray"
-                android:layout_marginBottom="4dp"/>
+                android:layout_marginBottom="@dimen/dp_4dp"/>
 
-        <!-- Mô tả dài (mặc định ẩn) -->
         <TextView
                 android:id="@+id/txtLongDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="@dimen/sp_14sp"
                 android:textColor="@android:color/black"
                 android:maxLines="3"
                 android:ellipsize="end"
                 android:scrollHorizontally="false"
-                android:lineSpacingExtra="4dp"
-                android:paddingBottom="4dp"/>
+                android:lineSpacingExtra="@dimen/dp_4dp"
+                android:paddingBottom="@dimen/dp_4dp"/>
 
 
 
-        <!-- Nút Read more / Read less nằm dưới mô tả dài -->
         <TextView
                 android:id="@+id/txtReadMore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Read more"
-                android:textSize="14sp"
+                android:text="@string/tv_readmore"
+                android:textSize="@dimen/sp_14sp"
                 android:textColor="@android:color/holo_blue_dark"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="@dimen/dp_8dp"/>
 
-        <!-- Gạch ngang ngăn cách mô tả dài với size -->
         <View
                 android:id="@+id/viewDividerAfterLongDesc"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/dp_1dp"
                 android:background="@android:color/darker_gray"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="@dimen/dp_8dp"/>
 
 
 
@@ -146,16 +159,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="4dp">
+                android:paddingBottom="@dimen/dp_4dp">
 
             <TextView
                     android:id="@+id/tv_size"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Size"
+                    android:text="@string/tv_size"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/sp_16sp"
                     android:ellipsize="none"
                     android:singleLine="true"/>
 
@@ -163,8 +176,8 @@
                     android:id="@+id/tv_ukus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EUR UK US"
-                    android:textSize="16sp"
+                    android:text="@string/tv_ukus"
+                    android:textSize="@dimen/sp_16sp"
                     android:singleLine="true"/>
         </LinearLayout>
 
@@ -173,7 +186,7 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerSizes"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="@dimen/dp_60dp"
                 android:clipToPadding="false"
                 android:orientation="horizontal"
                 android:overScrollMode="never"/>
@@ -184,7 +197,7 @@
     <Button
         android:id="@+id/btnAddToCart"
         android:layout_width="@dimen/dp_350dp"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/dp_60dp"
         android:text="@string/btn_addtocart"
         android:textStyle="bold"
         android:backgroundTint="@android:color/black"
@@ -192,7 +205,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="@dimen/dp_40dp"
-            />
+            android:layout_marginBottom="@dimen/dp_40dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

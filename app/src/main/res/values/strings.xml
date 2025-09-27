@@ -20,4 +20,6 @@
     <string name="tv_gia">96$</string>
     <string name="btn_addtocart">ADD TO CART</string>
     <string name="tv_size">Size</string>
+    <string name="tv_readmore">Read more</string>
+    <string name="tv_ukus">EUR UK US</string>
 </resources>

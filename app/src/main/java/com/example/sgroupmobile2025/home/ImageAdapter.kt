@@ -15,7 +15,6 @@ class ImageAdapter(
 ) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
     private val likedStates = MutableList(products.size) { index ->
-        // nếu index chẵn thì true (đỏ), lẻ thì false (xám)
         index % 2 == 0
     }
 
@@ -26,7 +25,6 @@ class ImageAdapter(
             binding.txtName.text = product.shortDescription
             binding.txtPrice.text = product.price
 
-//             Gán màu tim nè ní
             val isLiked = likedStates[position]
             if (isLiked) {
                 binding.imgHeart.setColorFilter(
@@ -43,7 +41,6 @@ class ImageAdapter(
                 notifyItemChanged(position)
             }
 
-            // Chuyển sang  detail
             binding.root.setOnClickListener {
                 val intent = Intent(context, ProductDetailActivity::class.java)
                 intent.putExtra("product", product)

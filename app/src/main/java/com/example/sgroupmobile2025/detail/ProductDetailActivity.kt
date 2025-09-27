@@ -3,23 +3,25 @@ package com.example.sgroupmobile2025.detail
 import GalleryAdapter
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sgroupmobile2025.databinding.ActivityProductDetailBinding
 import com.example.sgroupmobile2025.home.Product
-
+import java.text.DecimalFormat
 
 class ProductDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductDetailBinding
+
+    private var basePrice: Double = 0.0
+    private var currentPrice: Double = 0.0
+    private var quantity: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Nhận dữ liệu từ Intent
         val product = intent.getSerializableExtra("product") as? Product
         product?.let { bindProduct(it) }
     }
@@ -28,14 +30,17 @@ class ProductDetailActivity : AppCompatActivity() {
         binding.imgProduct.setImageResource(product.image)
 
         binding.txtName.text = product.name
-        binding.txtPrice.text = product.price
 
+        val priceNumber = product.price.filter { it.isDigit() || it == '.' }
+        basePrice = priceNumber.toDoubleOrNull() ?: 0.0
+        currentPrice = basePrice
+
+        binding.txtPrice.text = formatPrice(currentPrice)
 
         binding.txtShortDescription.text = product.shortDescription
         binding.txtLongDescription.text = product.longDescription
 
         var isExpanded = false
-
         binding.txtReadMore.setOnClickListener {
             if (isExpanded) {
                 binding.txtLongDescription.maxLines = 3
@@ -49,59 +54,55 @@ class ProductDetailActivity : AppCompatActivity() {
             isExpanded = !isExpanded
         }
 
-
-
-
-
-
         binding.recyclerGallery.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerGallery.adapter = GalleryAdapter(product.gallery)
 
         binding.recyclerSizes.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerSizes.adapter = SizeAdapter(product.sizes)
+        val sizeAdapter = SizeAdapter(product.sizes)
+        binding.recyclerSizes.adapter = sizeAdapter
 
         binding.btnBack.setOnClickListener { finish() }
 
-
-
-        binding.recyclerSizes.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-// Truyền danh sách size vào adapter
-        val sizeAdapter = SizeAdapter(product.sizes)
-
-// Gán adapter cho RecyclerView
-        binding.recyclerSizes.adapter = sizeAdapter
-
-
-
         val position = intent.getIntExtra("position", -1)
-        var isFavorite = position % 2 != 0 // chẵn = true, lẻ = false
-
-        if (isFavorite) {
-            binding.btnFavorite.setColorFilter(
-                ContextCompat.getColor(this, android.R.color.holo_red_dark)
+        var isFavorite = position % 2 != 0
+        binding.btnFavorite.setColorFilter(
+            ContextCompat.getColor(
+                this,
+                if (isFavorite) android.R.color.holo_red_dark else android.R.color.darker_gray
             )
-        } else {
+        )
+        binding.btnFavorite.setOnClickListener {
+            isFavorite = !isFavorite
             binding.btnFavorite.setColorFilter(
-                ContextCompat.getColor(this, android.R.color.darker_gray)
+                ContextCompat.getColor(
+                    this,
+                    if (isFavorite) android.R.color.holo_red_dark else android.R.color.darker_gray
+                )
             )
         }
 
-        binding.btnFavorite.setOnClickListener {
-            isFavorite = !isFavorite
-            if (isFavorite) {
-                binding.btnFavorite.setColorFilter(
-                    ContextCompat.getColor(this, android.R.color.holo_red_dark)
-                )
-            } else {
-                binding.btnFavorite.setColorFilter(
-                    ContextCompat.getColor(this, android.R.color.darker_gray)
-                )
+        binding.btnPlus.setOnClickListener {
+            quantity++
+            updatePrice()
+        }
+
+        binding.btnMinus.setOnClickListener {
+            if (quantity > 1) {
+                quantity--
+                updatePrice()
             }
         }
     }
-}
 
+    private fun updatePrice() {
+        currentPrice = basePrice * quantity
+        binding.txtPrice.text = formatPrice(currentPrice)
+    }
+
+    private fun formatPrice(price: Double): String {
+        val formatter = DecimalFormat("#,###.##")
+        return "${formatter.format(price)} $"
+    }
+}
