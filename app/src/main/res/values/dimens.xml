@@ -11,6 +11,7 @@
     //padding
     <dimen name="padding_small">10dp</dimen>
     <dimen name="padding_medium">15dp</dimen>
+    <dimen name="padding_smallest">2dp</dimen>
 
     //0dp
     <dimen name="size_zero">0dp</dimen>
@@ -35,9 +36,8 @@
     <dimen name="container">200dp</dimen>
     <dimen name="search_height">40dp</dimen>
     <dimen name="search_width">320dp</dimen>
-    <dimen name="item_width">160dp</dimen>
-    <dimen name="item_height">215dp</dimen>
-    <dimen name="product_height">130dp</dimen>
+    <dimen name="item_height">225dp</dimen>
+    <dimen name="product_height">140dp</dimen>
     <dimen name="item_margin_top">-12dp</dimen>
 
 </resources>

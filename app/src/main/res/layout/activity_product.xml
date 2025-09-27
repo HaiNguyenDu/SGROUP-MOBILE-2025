@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4F4F4"
-    tools:context=".ProductActivity"
-    android:padding="@dimen/padding_small">
+    tools:context=".ProductActivity">
 
     <ImageView
+        android:id="@+id/ic_nav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
         android:src="@drawable/ic_menu"
         app:layout_constraintBottom_toBottomOf="@+id/cv_search"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,6 +22,7 @@
         android:id="@+id/cv_search"
         android:layout_width="@dimen/search_width"
         android:layout_height="@dimen/search_height"
+        android:layout_margin="@dimen/margin_medium"
         app:cardCornerRadius="@dimen/radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -43,13 +45,14 @@
         android:text="@string/product_search"
         android:textSize="@dimen/text_large"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ic_nav"
         app:layout_constraintTop_toBottomOf="@+id/cv_search" />
 
     <TextView
         android:id="@+id/tv_product_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
         android:text="@string/product_count"
         android:textSize="@dimen/text_mediumlarge"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,14 +74,13 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_filter"
         app:layout_constraintBottom_toBottomOf="@+id/tv_key_search"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/cv_search"
         app:layout_constraintTop_toTopOf="@+id/tv_key_search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_zero"
-        android:layout_margin="@dimen/margin_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_product_count" />
 
