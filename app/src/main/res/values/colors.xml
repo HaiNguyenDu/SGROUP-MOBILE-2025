@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="A4A4A4">#A4A4A4</color>
+    <color name="red">#FF3333</color>
 </resources>
