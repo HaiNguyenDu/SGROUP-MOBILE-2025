@@ -11,6 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SgroupMobile2025">
         <activity
+            android:name=".detail.SizeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".detail.SizeAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".detail.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProductItem"
             android:exported="false" />
         <activity

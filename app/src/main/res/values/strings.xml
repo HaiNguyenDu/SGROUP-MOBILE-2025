@@ -23,8 +23,13 @@
     <string name="title_activity_register">Register_Activity</string>
     <string name="button_back">Back</string>
 
-<!--    Product-->
+    <!--    Product-->
     <string name="search_product">Search product</string>
     <string name="main_sneaker">Sneakers</string>
     <string name="product_found">25 products found</string>
+
+
+    <!--    Detail-->
+    <string name="detail_des_long">Eros, parturient sit posuere amet. Sed dignissim enim nulla egestas vitae id augue eleifend. Nam commodo scelerisque enim integer risus, non ...</string>
+    <string name="detail_read_more">Read more</string>
 </resources>
