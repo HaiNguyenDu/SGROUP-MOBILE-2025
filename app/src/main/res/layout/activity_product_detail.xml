@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.product.ProductDetailActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_detail_product"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_product"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/product_detail_height"
+        android:layout_marginTop="@dimen/margin_large"
+        android:scaleType="centerCrop"
+        android:src="@drawable/shoe_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_thumbnail"
+        android:layout_width="@dimen/size_zero"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/thumbnail"
+        app:layout_constraintEnd_toEndOf="@+id/ic_heart"
+        app:layout_constraintStart_toStartOf="@+id/iv_back"
+        app:layout_constraintTop_toBottomOf="@+id/iv_product" />
+
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/bg"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_product" />
+
+    <ImageView
+        android:id="@+id/ic_heart"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:src="@drawable/ic_red_heart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_product" />
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/product_name"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/iv_back"
+        app:layout_constraintTop_toBottomOf="@+id/iv_thumbnail" />
+
+    <TextView
+        android:id="@+id/tv_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:text="@string/product_price"
+        android:textSize="@dimen/text_mediumlarge"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_product_name"
+        app:layout_constraintEnd_toStartOf="@+id/iv_ic_add"
+        app:layout_constraintTop_toTopOf="@+id/tv_product_name" />
+
+    <ImageView
+        android:id="@+id/iv_ic_add"
+        android:layout_width="@dimen/_30dp"
+        android:layout_height="@dimen/_30dp"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:background="@drawable/bg"
+        android:backgroundTint="#FFD1DC"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_product_price"
+        app:layout_constraintEnd_toStartOf="@+id/iv_ic_minus"
+        app:layout_constraintTop_toTopOf="@+id/tv_product_price" />
+
+    <ImageView
+        android:id="@+id/iv_ic_minus"
+        android:layout_width="@dimen/_30dp"
+        android:layout_height="@dimen/_30dp"
+        android:background="@drawable/bg"
+        android:backgroundTint="#FFD1DC"
+        android:src="@drawable/ic_minus"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_product_price"
+        app:layout_constraintEnd_toEndOf="@+id/ic_heart"
+        app:layout_constraintTop_toTopOf="@+id/tv_product_price" />
+
+    <TextView
+        android:id="@+id/tv_product_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/product_des"
+        android:textSize="@dimen/text_mediumlarge"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/iv_back"
+        app:layout_constraintTop_toBottomOf="@+id/tv_product_name" />
+
+    <TextView
+        android:id="@+id/line1"
+        android:layout_width="@dimen/size_zero"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line"
+        app:layout_constraintEnd_toEndOf="@+id/ic_heart"
+        app:layout_constraintStart_toStartOf="@+id/iv_back"
+        app:layout_constraintTop_toBottomOf="@+id/tv_product_des" />
+
+    <TextView
+        android:id="@+id/tv_product_detail_des"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:ellipsize="end"
+        android:maxLines="4"
+        android:text="@string/product_detail_des"
+        android:textSize="@dimen/text_medium"
+        app:layout_constraintEnd_toEndOf="@+id/ic_heart"
+        app:layout_constraintStart_toStartOf="@+id/iv_back"
+        app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+    <TextView
+        android:id="@+id/tv_read_more"
+        android:layout_width="@dimen/size_zero"
+        android:layout_height="wrap_content"
+        android:text="@string/read_more"
+        android:textSize="@dimen/text_medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ic_heart"
+        app:layout_constraintStart_toStartOf="@+id/iv_back"
+        app:layout_constraintTop_toBottomOf="@+id/tv_product_detail_des" />
+
+    <TextView
+        android:id="@+id/line2"
+        android:layout_width="@dimen/size_zero"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line"
+        app:layout_constraintEnd_toEndOf="@+id/ic_heart"
+        app:layout_constraintStart_toStartOf="@+id/iv_back"
+        app:layout_constraintTop_toBottomOf="@+id/tv_read_more" />
+
+
+    <TextView
+        android:id="@+id/tv_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/size"
+        android:textSize="@dimen/text_medium"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/iv_back"
+        app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_size"
+        android:layout_width="@dimen/size_zero"
+        android:layout_height="@dimen/size_zero"
+        app:layout_constraintBottom_toTopOf="@+id/cv_add_to_card"
+        app:layout_constraintEnd_toEndOf="@+id/ic_heart"
+        app:layout_constraintStart_toStartOf="@+id/iv_back"
+        app:layout_constraintTop_toBottomOf="@+id/tv_size" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_add_to_card"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/card_height"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:backgroundTint="#FFB6C1"
+        android:elevation="@dimen/size_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ic_heart"
+        app:layout_constraintStart_toStartOf="@+id/iv_back">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/add_to_card"
+            android:textSize="@dimen/text_mediumlarge"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

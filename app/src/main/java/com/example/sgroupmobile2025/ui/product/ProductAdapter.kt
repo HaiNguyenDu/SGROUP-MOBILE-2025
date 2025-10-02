@@ -1,14 +1,13 @@
-package com.example.sgroupmobile2025
+package com.example.sgroupmobile2025.ui.product
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.sgroupmobile2025.databinding.ActivityProductBinding
+import com.example.sgroupmobile2025.data.model.DataProduct
 import com.example.sgroupmobile2025.databinding.ProductItemBinding
 
-class ProductAdapter(private val productList: List<DataProduct>): RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
+class ProductAdapter(private val productList: List<DataProduct>, private val onItemClick: (Int) -> Unit): RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -21,13 +20,14 @@ class ProductAdapter(private val productList: List<DataProduct>): RecyclerView.A
         holder: ViewHolder,
         position: Int
     ) {
-        holder.onHolder(productList[position])
+        holder.onHolder(position)
     }
 
     override fun getItemCount(): Int = productList.size
 
     inner class ViewHolder(val binding: ProductItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun onHolder(productData: DataProduct){
+        fun onHolder(position: Int){
+            val productData = productList[position]
             Glide.with(binding.root.context)
                 .load(productData.getImgSrc())
                 .into(binding.ivProduct)
@@ -35,6 +35,10 @@ class ProductAdapter(private val productList: List<DataProduct>): RecyclerView.A
             binding.tvProductName.text = productData.getName()
             binding.tvProductDes.text = productData.getDescription()
             binding.tvPrice.text = "$${productData.getPrice()}"
+
+            itemView.setOnClickListener {
+                onItemClick(position)
+            }
         }
     }
 }

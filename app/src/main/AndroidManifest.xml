@@ -14,15 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SgroupMobile2025">
         <activity
-            android:name=".ProductActivity"
+            android:name=".ui.product.ProductDetailActivity"
             android:exported="true">
-
         </activity>
         <activity
-            android:name=".SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".ui.product.ProductShowActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +27,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.auth.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
             android:exported="true" />
     </application>
 

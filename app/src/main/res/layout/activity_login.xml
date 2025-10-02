@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/image_view_height"
         android:scaleType="centerCrop"
-        android:src="@drawable/userbackground"
+        android:src="@drawable/user_background"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
@@ -27,7 +27,7 @@
         android:layout_height="@dimen/size_zero"
         android:layout_marginTop="@dimen/minus_margin"
         android:layout_marginBottom="@dimen/margin_bottom"
-        android:src="@drawable/objectbackgrounds"
+        android:src="@drawable/object_backgrounds"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView

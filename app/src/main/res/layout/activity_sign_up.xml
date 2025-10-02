@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_zero"
         android:layout_marginTop="-100dp"
-        android:src="@drawable/objectsbgsignup"
+        android:src="@drawable/objects_bg_signup"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 

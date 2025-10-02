@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4F4F4"
-    tools:context=".ProductActivity">
+    tools:context=".ui.product.ProductShowActivity">
 
     <ImageView
         android:id="@+id/ic_nav"

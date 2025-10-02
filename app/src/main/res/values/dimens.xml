@@ -39,5 +39,9 @@
     <dimen name="item_height">225dp</dimen>
     <dimen name="product_height">140dp</dimen>
     <dimen name="item_margin_top">-12dp</dimen>
+    <dimen name="product_detail_height">300dp</dimen>
+    <dimen name="bg_product_detail_height">100dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="size_box">60dp</dimen>
 
 </resources>
