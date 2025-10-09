@@ -1,7 +1,7 @@
-package com.example.sgroupmobile2025
+package com.example.sgroupmobile2025.ui.auth
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -47,7 +47,7 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this, "Please fill all information", Toast.LENGTH_LONG).show()
             return false
         }
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.etEmail.error = "Invalid email"
             return false
         }
