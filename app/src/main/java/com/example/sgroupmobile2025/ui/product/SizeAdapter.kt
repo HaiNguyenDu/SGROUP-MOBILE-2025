@@ -28,7 +28,7 @@ class SizeAdapter(private val listSize: List<Int>): RecyclerView.Adapter<SizeAda
 
     inner class ViewHolder(private val binding: SizeItemBinding): RecyclerView.ViewHolder(binding.root){
         fun onHolder(position: Int){
-            val size =  listSize[position]
+            val size = listSize[position]
             binding.tvSize.text = size.toString()
             if(position == selectedItem){
                 binding.tvSize.setBackgroundColor(
