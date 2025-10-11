@@ -27,5 +27,8 @@
     <string name="size">Size</string>
     <string name="product_size">38</string>
     <string name="read_more">Read more</string>
+    <string name="gallery">Thư viện ảnh</string>
+    <string name="message_dialog_request_permission">Cho phép truy cập thư viện ảnh?</string>
+    <string name="request_permission">Yêu cầu quyền truy cập</string>
 
 </resources>

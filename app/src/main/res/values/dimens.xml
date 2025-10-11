@@ -21,6 +21,9 @@
     <dimen name="text_large">40sp</dimen>
     <dimen name="text_medium">15sp</dimen>
     <dimen name="text_mediumlarge">18sp</dimen>
+
+    //size
+    <dimen name="medium_size">60dp</dimen>
     
     //corner
     <dimen name="radius">10dp</dimen>
