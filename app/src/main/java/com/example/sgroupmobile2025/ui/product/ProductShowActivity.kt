@@ -13,6 +13,7 @@ import com.example.sgroupmobile2025.common.constants.IntentKeys
 import com.example.sgroupmobile2025.data.model.DataProduct
 import com.example.sgroupmobile2025.data.repository.ProductRepository
 import com.example.sgroupmobile2025.databinding.ActivityProductBinding
+import com.example.sgroupmobile2025.ui.gallery.LocalImageActivity
 
 class ProductShowActivity : AppCompatActivity() {
     private val binding by lazy { ActivityProductBinding.inflate(layoutInflater) }
@@ -33,6 +34,10 @@ class ProductShowActivity : AppCompatActivity() {
             }
             binding.cvSearch.layoutParams = layout
             WindowInsetsCompat.CONSUMED
+        }
+        binding.icNav.setOnClickListener {
+            val intentImage = Intent(this, LocalImageActivity::class.java)
+            startActivity(intentImage)
         }
     }
 
