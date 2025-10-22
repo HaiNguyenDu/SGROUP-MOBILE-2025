@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.gallery.LocalImageActivity">
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_title"
         android:layout_width="match_parent"
@@ -36,14 +35,37 @@
         app:layout_constraintBottom_toBottomOf="@id/cv_title"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/cv_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_no_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Không có ảnh nào trong thư viện"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_medium"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/cv_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_images"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_zero"
+        android:layout_height="0dp"
         android:padding="@dimen/padding_small"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_title" />
+        app:layout_constraintTop_toBottomOf="@id/cv_title"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_permission"

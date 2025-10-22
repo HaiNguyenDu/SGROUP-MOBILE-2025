@@ -10,8 +10,6 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,11 +19,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sgroupmobile2025.R
 import com.example.sgroupmobile2025.data.local.LocalData
 import com.example.sgroupmobile2025.databinding.ActivityLocalImageBinding
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LocalImageActivity : AppCompatActivity() {
     private val binding by lazy { ActivityLocalImageBinding.inflate(layoutInflater) }
-    val IMAGE_PERMISSION = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+    private val imagePermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         Manifest.permission.READ_MEDIA_IMAGES
     } else {
         Manifest.permission.READ_EXTERNAL_STORAGE
@@ -33,62 +33,81 @@ class LocalImageActivity : AppCompatActivity() {
 
     private val permissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ){
-        granted ->
-        when{
-            granted ->{
+    ) { granted ->
+        when {
+            granted -> {
                 binding.cardPermission.visibility = View.GONE
                 loadImages()
             }
-            shouldShowRequestPermissionRationale(IMAGE_PERMISSION) -> showRationale()
+            shouldShowRequestPermissionRationale(imagePermission) -> showRationale()
             else -> showDialogGoToSetting()
         }
     }
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val hasPermission = checkSelfPermission(IMAGE_PERMISSION) == android.content.pm.PackageManager.PERMISSION_GRANTED
+
+        val hasPermission = checkSelfPermission(imagePermission) ==
+                android.content.pm.PackageManager.PERMISSION_GRANTED
         if (hasPermission) {
             loadImages()
             binding.cardPermission.visibility = View.GONE
         } else {
-            binding.cardPermission.visibility = View.VISIBLE
-
+            permissionLauncher.launch(imagePermission)
         }
+
         binding.btnRequestPermission.setOnClickListener {
-            permissionLauncher.launch(IMAGE_PERMISSION)
-        }
-        binding.btnBack.setOnClickListener {
-            finish()
+            permissionLauncher.launch(imagePermission)
         }
 
+        binding.btnBack.setOnClickListener { finish() }
     }
-    fun loadImages(){
+
+    private fun loadImages() {
         lifecycleScope.launch {
-            val localImage = LocalData(this@LocalImageActivity)
-            val images = localImage.getImages()
-            val adapter = LocalImageAdapter(images)
-            Log.e("EEEE", images.toString())
-            binding.rvImages.layoutManager = GridLayoutManager(this@LocalImageActivity, 4)
-            binding.rvImages.adapter = adapter
+            try {
+                binding.progressBar.visibility = View.VISIBLE
+                binding.tvNoImage.visibility = View.GONE
+                binding.rvImages.visibility = View.GONE
+
+                // Giả lập thời gian tải ảnh
+                delay(1500)
+
+                val localImage = LocalData(this@LocalImageActivity)
+                val images = localImage.getImages()
+
+                if (images.isEmpty()) {
+                    binding.tvNoImage.visibility = View.VISIBLE
+                } else {
+                    val adapter = LocalImageAdapter(images)
+                    binding.rvImages.layoutManager =
+                        GridLayoutManager(this@LocalImageActivity, 4)
+                    binding.rvImages.adapter = adapter
+                    binding.rvImages.visibility = View.VISIBLE
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.e("LoadImageError", e.message ?: "Unknown error")
+            } finally {
+                binding.progressBar.visibility = View.GONE
+            }
         }
     }
+
     private fun showRationale() {
         AlertDialog.Builder(this)
             .setTitle("Cần quyền truy cập ảnh")
-            .setMessage("App cần quyền này để hiển thị hình ảnh từ thư viện.")
+            .setMessage("Ứng dụng cần quyền này để hiển thị hình ảnh từ thư viện.")
             .setPositiveButton("Đồng ý") { dialog, _ ->
-                // Yêu cầu quyền lại
-                permissionLauncher.launch(IMAGE_PERMISSION)
+                permissionLauncher.launch(imagePermission)
                 dialog.dismiss()
             }
             .setNegativeButton("Hủy") { dialog, _ ->
@@ -96,10 +115,11 @@ class LocalImageActivity : AppCompatActivity() {
             }
             .show()
     }
+
     private fun showDialogGoToSetting() {
         AlertDialog.Builder(this)
             .setTitle("Quyền bị từ chối vĩnh viễn")
-            .setMessage("App cần quyền truy cập ảnh. Vui lòng bật quyền trong Cài đặt.")
+            .setMessage("Ứng dụng cần quyền truy cập ảnh. Vui lòng bật quyền trong Cài đặt.")
             .setPositiveButton("Đi tới Cài đặt") { dialog, _ ->
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                 val uri = Uri.fromParts("package", packageName, null)
@@ -112,6 +132,4 @@ class LocalImageActivity : AppCompatActivity() {
             }
             .show()
     }
-
-
 }

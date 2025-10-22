@@ -39,7 +39,8 @@ android {
 }
 
 dependencies {
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.lottie)
+    implementation (libs.glide)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
