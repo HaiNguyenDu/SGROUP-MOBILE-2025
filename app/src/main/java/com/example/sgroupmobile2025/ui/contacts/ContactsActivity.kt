@@ -46,6 +46,7 @@ class ContactsActivity : AppCompatActivity() {
         lifecycleScope.launch {
             contactsViewModel.isLoading.collect { isLoading ->
                 binding.lottieLoading.visibility =  if(isLoading) View.VISIBLE else View.GONE
+                binding.overlay.visibility =  if(isLoading) View.VISIBLE else View.GONE
             }
         }
     }
