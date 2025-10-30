@@ -13,6 +13,7 @@ import com.example.sgroupmobile2025.common.constants.IntentKeys
 import com.example.sgroupmobile2025.data.model.DataProduct
 import com.example.sgroupmobile2025.data.repository.ProductRepository
 import com.example.sgroupmobile2025.databinding.ActivityProductBinding
+import com.example.sgroupmobile2025.ui.contacts.ContactsActivity
 import com.example.sgroupmobile2025.ui.gallery.LocalImageActivity
 
 class ProductShowActivity : AppCompatActivity() {
@@ -24,7 +25,11 @@ class ProductShowActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         productList = createDataProducts()
+        handleViewCompat()
         setupRecyclerView()
+        setOnClick()
+    }
+    fun handleViewCompat(){
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val inset = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val layout = binding.cvSearch.layoutParams
@@ -35,9 +40,15 @@ class ProductShowActivity : AppCompatActivity() {
             binding.cvSearch.layoutParams = layout
             WindowInsetsCompat.CONSUMED
         }
+    }
+    fun setOnClick(){
         binding.icNav.setOnClickListener {
             val intentImage = Intent(this, LocalImageActivity::class.java)
             startActivity(intentImage)
+        }
+        binding.icContacts.setOnClickListener {
+            val intentContacts = Intent(this, ContactsActivity::class.java)
+            startActivity(intentContacts)
         }
     }
 

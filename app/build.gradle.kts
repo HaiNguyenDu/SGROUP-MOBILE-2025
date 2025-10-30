@@ -39,6 +39,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.lottie)
     implementation (libs.glide)
     implementation(libs.androidx.core.ktx)
