@@ -30,6 +30,7 @@ class ContactsActivity : AppCompatActivity() {
         initUI()
         handleObserve()
         handleToolbar()
+        contactsViewModel.getName()
     }
     fun initUI(){
         contactsViewModel = ContactsViewModel(application)
