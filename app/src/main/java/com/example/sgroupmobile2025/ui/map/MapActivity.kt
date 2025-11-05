@@ -26,6 +26,7 @@ class MapActivity : AppCompatActivity() {
         initView()
         handleObserve()
         handleSearch()
+        handleToolbar()
     }
     fun handleSearch(){
         binding.etSeachMap.addTextChangedListener { editable ->
@@ -63,5 +64,13 @@ class MapActivity : AppCompatActivity() {
         adapter = MapAdapter(emptyList())
         binding.rcvMap.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rcvMap.adapter = adapter
+    }
+    fun handleToolbar(){
+        val toolbar = binding.toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = ""
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
     }
 }

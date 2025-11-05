@@ -33,6 +33,7 @@
     <string name="contacts_title">Danh bạ</string>
     <string name="contacts_add_title">Add new contact</string>
     <string name="search_map">Seach places...</string>
+    <string name="map_title">Map</string>
 
 
 </resources>
