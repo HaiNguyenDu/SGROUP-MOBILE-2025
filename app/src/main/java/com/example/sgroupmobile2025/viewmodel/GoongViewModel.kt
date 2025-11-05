@@ -7,15 +7,23 @@ import com.example.sgroupmobile2025.api.RetrofitInstance
 import com.example.sgroupmobile2025.common.constants.API_KEY
 import com.example.sgroupmobile2025.data.model.AutoCompleteResponse
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class GoongViewModel(application: Application): ViewModel() {
     val goongService = RetrofitInstance.getGoongService()
+    private var _isLoad = MutableStateFlow<Boolean>(false)
+
     private val _responsePlaces = MutableStateFlow<AutoCompleteResponse?>(null)
+    val isLoading: StateFlow<Boolean> = _isLoad
+
     val responsePlaces: MutableStateFlow<AutoCompleteResponse?> = _responsePlaces
     fun getPlaces(input: String, apiKey: String = API_KEY){
         viewModelScope.launch {
-            _responsePlaces.value = goongService.getPlaces(input, apiKey)
+            _isLoad.value = true
+            val response = goongService.getPlaces(input, apiKey)
+            _isLoad.value = false
+            _responsePlaces.value = response
         }
     }
 }

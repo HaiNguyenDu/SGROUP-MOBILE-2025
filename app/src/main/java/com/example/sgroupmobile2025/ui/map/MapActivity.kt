@@ -2,6 +2,7 @@ package com.example.sgroupmobile2025.ui.map
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -41,11 +42,19 @@ class MapActivity : AppCompatActivity() {
     }
     fun handleObserve(){
         lifecycleScope.launch {
-            mapViewModel.responsePlaces.collect {
-                response ->
-                if(response != null){
+            mapViewModel.responsePlaces.collect { response ->
+                if (response?.predictions?.isNotEmpty() == true) {
                     adapter.updatePlaces(response.predictions)
                 }
+                else{
+                    adapter.updatePlaces(emptyList())
+                }
+            }
+        }
+        lifecycleScope.launch {
+            mapViewModel.isLoading.collect { isLoading ->
+                binding.lottieLoading.visibility =  if(isLoading) View.VISIBLE else View.GONE
+                binding.overlay.visibility =  if(isLoading) View.VISIBLE else View.GONE
             }
         }
     }

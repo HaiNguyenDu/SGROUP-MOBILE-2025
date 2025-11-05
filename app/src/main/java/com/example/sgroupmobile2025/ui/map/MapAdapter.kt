@@ -3,8 +3,9 @@ package com.example.sgroupmobile2025.ui.map
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sgroupmobile2025.data.model.AutoCompleteResponse
+import com.example.sgroupmobile2025.R
 import com.example.sgroupmobile2025.data.model.Prediction
 import com.example.sgroupmobile2025.databinding.MapItemBinding
 
@@ -21,6 +22,8 @@ class MapAdapter(private var places: List<Prediction>): RecyclerView.Adapter<Map
         holder: ViewHolder,
         position: Int
     ) {
+        val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.fade_in)
+        holder.itemView.startAnimation(animation)
         holder.onHolder(places[position])
     }
 
