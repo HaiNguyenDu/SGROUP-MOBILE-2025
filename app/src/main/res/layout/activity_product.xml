@@ -83,25 +83,42 @@
         android:layout_height="@dimen/size_zero"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_product_count" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/ic_contacts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="@dimen/margin_largest"
-        android:layout_marginBottom="@dimen/margin_x_large"
         android:layout_width="@dimen/size_box"
         android:layout_height="@dimen/size_box"
-        android:insetBottom="@dimen/size_zero"
-        android:insetLeft="@dimen/size_zero"
-        android:insetRight="@dimen/size_zero"
-        android:insetTop="@dimen/size_zero"
-        app:icon="@drawable/ic_contacts"
+        android:layout_marginEnd="@dimen/margin_largest"
+        android:layout_marginBottom="@dimen/margin_large"
         android:backgroundTint="@color/light_pink"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+        android:insetLeft="@dimen/size_zero"
+        android:insetTop="@dimen/size_zero"
+        android:insetRight="@dimen/size_zero"
+        android:insetBottom="@dimen/size_zero"
         app:cornerRadius="@dimen/radius_large"
+        app:icon="@drawable/ic_contacts"
         app:iconGravity="textStart"
-        app:iconPadding="@dimen/size_zero"/>
+        app:iconPadding="@dimen/size_zero"
+        app:layout_constraintBottom_toTopOf="@id/ic_map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 
-
-
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ic_map"
+        android:layout_width="@dimen/size_box"
+        android:layout_height="@dimen/size_box"
+        android:layout_marginEnd="@dimen/margin_largest"
+        android:layout_marginBottom="@dimen/margin_x_large"
+        android:backgroundTint="@color/light_pink"
+        android:insetLeft="@dimen/size_zero"
+        android:insetTop="@dimen/size_zero"
+        android:insetRight="@dimen/size_zero"
+        android:insetBottom="@dimen/size_zero"
+        app:cornerRadius="@dimen/radius_large"
+        app:icon="@drawable/ic_map"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/size_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 </androidx.constraintlayout.widget.ConstraintLayout>

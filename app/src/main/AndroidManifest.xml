@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SgroupMobile2025">
         <activity
+            android:name=".ui.map.MapActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.contacts.ContactsActivity"
             android:exported="false" />
         <activity

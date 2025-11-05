@@ -15,6 +15,7 @@ import com.example.sgroupmobile2025.data.repository.ProductRepository
 import com.example.sgroupmobile2025.databinding.ActivityProductBinding
 import com.example.sgroupmobile2025.ui.contacts.ContactsActivity
 import com.example.sgroupmobile2025.ui.gallery.LocalImageActivity
+import com.example.sgroupmobile2025.ui.map.MapActivity
 
 class ProductShowActivity : AppCompatActivity() {
     private val binding by lazy { ActivityProductBinding.inflate(layoutInflater) }
@@ -49,6 +50,10 @@ class ProductShowActivity : AppCompatActivity() {
         binding.icContacts.setOnClickListener {
             val intentContacts = Intent(this, ContactsActivity::class.java)
             startActivity(intentContacts)
+        }
+        binding.icMap.setOnClickListener {
+            val intentMap = Intent(this, MapActivity::class.java)
+            startActivity(intentMap)
         }
     }
 
