@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,11 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SgroupMobile2025">
         <activity
+            android:name=".ui.map.MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.contacts.ContactsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.gallery.LocalImageActivity"
             android:exported="false" />
         <activity
             android:name=".ui.product.ProductDetailActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.product.ProductShowActivity"
             android:exported="true">
@@ -35,7 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.auth.LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true" />

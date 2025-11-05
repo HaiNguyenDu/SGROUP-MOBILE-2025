@@ -30,5 +30,10 @@
     <string name="gallery">Thư viện ảnh</string>
     <string name="message_dialog_request_permission">Cho phép truy cập thư viện ảnh?</string>
     <string name="request_permission">Yêu cầu quyền truy cập</string>
+    <string name="contacts_title">Danh bạ</string>
+    <string name="contacts_add_title">Add new contact</string>
+    <string name="search_map">Seach places...</string>
+    <string name="map_title">Map</string>
+
 
 </resources>

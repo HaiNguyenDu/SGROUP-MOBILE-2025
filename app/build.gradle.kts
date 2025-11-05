@@ -39,6 +39,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.gson)
+    implementation(libs.converter.gson)
+    implementation(libs.retrofit)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.lottie)
     implementation (libs.glide)
     implementation(libs.androidx.core.ktx)

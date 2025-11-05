@@ -5,23 +5,30 @@
     <dimen name="margin_largest">50dp</dimen>
     <dimen name="margin_small">10dp</dimen>
     <dimen name="margin_medium">15dp</dimen>
+
     <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_x_large">80dp</dimen>
     <dimen name="minus_margin">-80dp</dimen>
 
     //padding
+    <dimen name="padding_tiny">5dp</dimen>
     <dimen name="padding_small">10dp</dimen>
     <dimen name="padding_medium">15dp</dimen>
     <dimen name="padding_smallest">2dp</dimen>
 
     //0dp
     <dimen name="size_zero">0dp</dimen>
-    
+
+    //corner
+    <dimen name="radius_medium">15dp</dimen>
+    <dimen name="radius_large">30dp</dimen>
+
     //text size    
-    <dimen name="text_small"></dimen>
     <dimen name="text_large">40sp</dimen>
+    <dimen name="text_title">30sp</dimen>
     <dimen name="text_medium">15sp</dimen>
     <dimen name="text_mediumlarge">18sp</dimen>
-
+    <dimen name="text_small">20sp</dimen>
     //size
     <dimen name="medium_size">60dp</dimen>
     
@@ -38,6 +45,7 @@
 
     <dimen name="container">200dp</dimen>
     <dimen name="search_height">40dp</dimen>
+    <dimen name="search_x_height">60dp</dimen>
     <dimen name="search_width">320dp</dimen>
     <dimen name="item_height">225dp</dimen>
     <dimen name="product_height">140dp</dimen>
@@ -47,4 +55,8 @@
     <dimen name="_30dp">30dp</dimen>
     <dimen name="size_box">60dp</dimen>
 
+    <dimen name="contact_item_height">60dp</dimen>
+    <dimen name="contact_avatar">40dp</dimen>
+
+    <dimen name="line_thin">1dp</dimen>
 </resources>

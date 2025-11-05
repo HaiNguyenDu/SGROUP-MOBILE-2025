@@ -1,0 +1,13 @@
+package com.example.sgroupmobile2025.api
+
+import com.example.sgroupmobile2025.data.model.AutoCompleteResponse
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+interface GoongService {
+    @GET("v2/place/autocomplete")
+    suspend fun getPlaces(
+        @Query("input") input: String,
+        @Query("api_key") apiKey: String
+    ): AutoCompleteResponse
+}
