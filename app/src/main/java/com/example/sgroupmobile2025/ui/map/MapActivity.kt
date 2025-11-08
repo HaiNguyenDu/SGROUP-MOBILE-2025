@@ -64,12 +64,11 @@ class MapActivity : AppCompatActivity() {
     fun initView(){
         mapViewModel = GoongViewModel(application)
         adapter = MapAdapter(emptyList()){
-            placeId, placeDescription -> {
+            placeId, placeDescription ->
                 binding.etSeachMap.setText(placeDescription)
                 val intent = Intent(this, MapDetailActivity::class.java)
                 intent.putExtra(PLACE_ID, placeId)
                 startActivity(intent)
-            }
         }
         binding.rcvMap.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rcvMap.adapter = adapter
