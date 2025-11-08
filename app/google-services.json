@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "294871374299",
+    "firebase_url": "https://sgroup-kotlin-lab-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "sgroup-kotlin-lab",
+    "storage_bucket": "sgroup-kotlin-lab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294871374299:android:7910e1f9e22ac3c0b3effe",
+        "android_client_info": {
+          "package_name": "com.example.sgroupmobile2025"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANa83Mvb3a7QbJAFCj7qir3w1xwRQmlDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

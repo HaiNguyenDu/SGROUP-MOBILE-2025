@@ -27,8 +27,9 @@
     <dimen name="text_large">40sp</dimen>
     <dimen name="text_title">30sp</dimen>
     <dimen name="text_medium">15sp</dimen>
+    <dimen name="text_x_medium">20sp</dimen>
     <dimen name="text_mediumlarge">18sp</dimen>
-    <dimen name="text_small">20sp</dimen>
+    <dimen name="text_small">12sp</dimen>
     //size
     <dimen name="medium_size">60dp</dimen>
     
@@ -58,5 +59,7 @@
     <dimen name="contact_item_height">60dp</dimen>
     <dimen name="contact_avatar">40dp</dimen>
 
+    <dimen name="button_medium">60dp</dimen>
+    <dimen name="button_height_medium">25dp</dimen>
     <dimen name="line_thin">1dp</dimen>
 </resources>
