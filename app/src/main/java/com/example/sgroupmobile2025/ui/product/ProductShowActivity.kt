@@ -16,6 +16,8 @@ import com.example.sgroupmobile2025.databinding.ActivityProductBinding
 import com.example.sgroupmobile2025.ui.contacts.ContactsActivity
 import com.example.sgroupmobile2025.ui.gallery.LocalImageActivity
 import com.example.sgroupmobile2025.ui.map.MapActivity
+import org.maplibre.android.MapLibre
+import org.maplibre.android.WellKnownTileServer
 
 class ProductShowActivity : AppCompatActivity() {
     private val binding by lazy { ActivityProductBinding.inflate(layoutInflater) }
@@ -24,6 +26,7 @@ class ProductShowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        MapLibre.getInstance(this, null, WellKnownTileServer.MapLibre)
         setContentView(binding.root)
         productList = createDataProducts()
         handleViewCompat()

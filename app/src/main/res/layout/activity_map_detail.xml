@@ -25,122 +25,14 @@
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/iv_place"
+
+    <org.maplibre.android.maps.MapView
+        android:id="@+id/mv_place"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/image_view_height"
-        android:scaleType="centerCrop"
-        android:src="@drawable/place_detail"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        android:layout_height="@dimen/size_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/tag_address"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/button_height_medium"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:backgroundTint="@color/light_pink"
-        app:cardCornerRadius="@dimen/radius_medium"
-        app:layout_constraintStart_toStartOf="@id/tv_place_name"
-        app:layout_constraintTop_toBottomOf="@id/iv_place">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="@dimen/padding_tiny"
-            android:text="@string/tag_address"
-            android:textSize="@dimen/text_small" />
-    </androidx.cardview.widget.CardView>
-
-
-    <TextView
-        android:id="@+id/tv_place_name"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/card_height"
-        android:layout_margin="@dimen/margin_small"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:text="@string/place_name"
-        android:textSize="@dimen/text_x_medium"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tag_address" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/tag_location"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/button_height_medium"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:backgroundTint="@color/light_pink"
-        app:cardCornerRadius="@dimen/radius_medium"
-        app:layout_constraintStart_toStartOf="@id/tv_place_name"
-        app:layout_constraintTop_toBottomOf="@id/tv_place_name">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="@dimen/padding_tiny"
-            android:text="@string/tag_location"
-            android:textSize="@dimen/text_small" />
-    </androidx.cardview.widget.CardView>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        app:layout_constraintStart_toStartOf="@id/tv_place_name"
-        app:layout_constraintTop_toBottomOf="@id/tag_location">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFE0EB"
-            android:padding="@dimen/padding_small">
-
-            <TextView
-                android:layout_width="@dimen/size_zero"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:text="@string/lat_title"
-                android:textSize="@dimen/text_medium" />
-
-            <TextView
-                android:layout_width="@dimen/size_zero"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:text="@string/lng_title"
-                android:textSize="@dimen/text_medium" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_small">
-
-            <TextView
-                android:id="@+id/lat"
-                android:layout_width="@dimen/size_zero"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/lat"
-                android:textSize="@dimen/text_medium" />
-
-            <TextView
-                android:id="@+id/lng"
-                android:layout_width="@dimen/size_zero"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/lat"
-                android:textSize="@dimen/text_medium" />
-        </TableRow>
-    </TableLayout>
     <View
         android:id="@+id/overlay"
         android:layout_width="match_parent"

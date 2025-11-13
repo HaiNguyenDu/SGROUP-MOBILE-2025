@@ -54,7 +54,92 @@
         android:padding="@dimen/padding_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cv_search_map" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tag_origin"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@color/light_pink"
+        app:cardCornerRadius="@dimen/radius_medium"
+        app:layout_constraintStart_toStartOf="@id/tv_destination"
+        app:layout_constraintBottom_toTopOf="@id/tv_origin">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/padding_tiny"
+            android:text="@string/tag_from"
+            android:textSize="@dimen/text_small" />
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/tv_origin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_height"
+        android:layout_margin="@dimen/margin_small"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:text="@string/place_name"
+        android:textSize="@dimen/text_x_medium"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tag_destination"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tag_destination"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@color/light_pink"
+        app:cardCornerRadius="@dimen/radius_medium"
+        app:layout_constraintStart_toStartOf="@id/tv_destination"
+        app:layout_constraintBottom_toTopOf="@id/tv_destination">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="@dimen/padding_tiny"
+            android:text="@string/tag_destination"
+            android:textSize="@dimen/text_small" />
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/tv_destination"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_height"
+        android:layout_margin="@dimen/margin_small"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:text="@string/place_name"
+        android:textSize="@dimen/text_x_medium"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/btn_go" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_go"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_width="@dimen/button_large"
+        android:layout_height="@dimen/search_x_height"
+        app:cardCornerRadius="@dimen/radius_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tv_go"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_pink"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            android:hint="@string/go"
+            android:padding="@dimen/padding_small"/>
+    </androidx.cardview.widget.CardView>
     <View
         android:id="@+id/overlay"
         android:layout_width="match_parent"
@@ -67,8 +152,10 @@
         android:layout_height="@dimen/size_zero"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cv_search_map"
+        app:layout_constraintVertical_bias="1.0"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/loading" />

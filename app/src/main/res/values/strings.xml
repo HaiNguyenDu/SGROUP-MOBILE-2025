@@ -41,6 +41,9 @@
     <string name="lat">123,9875408754</string>
     <string name="lat_title">Latitude</string>
     <string name="lng_title">Longtitude</string>
+    <string name="go">Go</string>
+    <string name="tag_destination">To</string>
+    <string name="tag_from">From</string>
 
 
 </resources>

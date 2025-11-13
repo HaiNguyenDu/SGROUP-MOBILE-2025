@@ -43,8 +43,10 @@ android {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
-    implementation("com.google.firebase:firebase-database")
+    implementation(libs.android.plugin.annotation.v9)
+    implementation(libs.android.sdk)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.database)
     implementation(libs.gson)
     implementation(libs.converter.gson)
     implementation(libs.retrofit)
