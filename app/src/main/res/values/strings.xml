@@ -44,6 +44,9 @@
     <string name="go">Go</string>
     <string name="tag_destination">To</string>
     <string name="tag_from">From</string>
+    <string name="chat_title">Nhắn tin</string>
+    <string name="chat_description">Send</string>
+    <string name="chat_hint">Nhập tin nhắn</string>
 
 
 </resources>

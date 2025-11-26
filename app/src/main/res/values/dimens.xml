@@ -63,4 +63,5 @@
     <dimen name="button_large">100dp</dimen>
     <dimen name="button_height_medium">25dp</dimen>
     <dimen name="line_thin">1dp</dimen>
+    <dimen name="send_button_size">44dp</dimen>
 </resources>
