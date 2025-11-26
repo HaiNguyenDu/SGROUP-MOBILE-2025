@@ -1,6 +1,7 @@
 package com.example.sgroupmobile2025.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sgroupmobile2025.api.RetrofitInstance
@@ -9,6 +10,7 @@ import com.example.sgroupmobile2025.data.model.AutoCompleteResponse
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class GoongViewModel(application: Application): ViewModel() {
     val goongService = RetrofitInstance.getGoongService()
@@ -20,10 +22,15 @@ class GoongViewModel(application: Application): ViewModel() {
     val responsePlaces: MutableStateFlow<AutoCompleteResponse?> = _responsePlaces
     fun getPlaces(input: String, apiKey: String = API_KEY){
         viewModelScope.launch {
-            _isLoad.value = true
-            val response = goongService.getPlaces(input, apiKey)
-            _isLoad.value = false
-            _responsePlaces.value = response
+            try{
+                _isLoad.value = true
+                val response = goongService.getPlaces(input, apiKey)
+                _isLoad.value = false
+                _responsePlaces.value = response
+            }catch (e: Exception){
+                Log.e("Error", e.toString())
+            }
+
         }
     }
 }

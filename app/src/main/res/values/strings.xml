@@ -34,6 +34,19 @@
     <string name="contacts_add_title">Add new contact</string>
     <string name="search_map">Seach places...</string>
     <string name="map_title">Map</string>
+    <string name="map_detail_title">Place Detail</string>
+    <string name="place_name">57, Chơn Tâm 5, Hòa Khánh</string>
+    <string name="tag_address">Address</string>
+    <string name="tag_location">Locationnnnn</string>
+    <string name="lat">123,9875408754</string>
+    <string name="lat_title">Latitude</string>
+    <string name="lng_title">Longtitude</string>
+    <string name="go">Go</string>
+    <string name="tag_destination">To</string>
+    <string name="tag_from">From</string>
+    <string name="chat_title">Nhắn tin</string>
+    <string name="chat_description">Send</string>
+    <string name="chat_hint">Nhập tin nhắn</string>
 
 
 </resources>

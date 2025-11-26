@@ -1,6 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    kotlin("android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -26,30 +27,39 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures{
+
+    buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
+    implementation(libs.android.plugin.annotation.v9)
+    implementation(libs.android.sdk)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.database)
     implementation(libs.gson)
     implementation(libs.converter.gson)
     implementation(libs.retrofit)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.lottie)
-    implementation (libs.glide)
+    implementation(libs.glide)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
