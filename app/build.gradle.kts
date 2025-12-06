@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.android.plugin.annotation.v9)
     implementation(libs.android.sdk)
     implementation(platform(libs.firebase.bom))
