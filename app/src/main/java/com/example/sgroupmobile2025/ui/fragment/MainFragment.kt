@@ -28,17 +28,17 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        mainAdapter = MainFragmentAdater(emptyList())
         observeData()
     }
     private fun initView() {
-
+        mainAdapter = MainFragmentAdater(emptyList())                     
         binding.rcv.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rcv.adapter = mainAdapter
     }
     private fun observeData() {
         lifecycleScope.launch {
+
             viewModel.posters.collect { list ->
                 mainAdapter.updateImages(list)
             }

@@ -47,7 +47,7 @@ class MainFragmentAdater(var posters: List<Poster>): RecyclerView.Adapter<MainFr
                 binding.tvName.text = posters[position - 1].title
                 binding.rcv.layoutManager =
                     LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
-                binding.rcv.adapter = ListImageAdapter(Poster.listPosters[position - 1].images)
+                binding.rcv.adapter = ListImageAdapter(posters[position - 1].images)
             }
         }
     }
