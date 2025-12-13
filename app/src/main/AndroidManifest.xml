@@ -16,10 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SgroupMobile2025">
         <activity
-            android:name=".ui.chat.ChatActivity"
-            android:exported="false" />
+            android:name=".ui.fragment.MainFragmentActivity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
-            android:name=".ui.map.DirectionActivity"
+            android:name=".ui.chat.ChatActivity"
             android:exported="false" />
         <activity
             android:name=".ui.map.MapDetailActivity"
@@ -38,13 +44,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.product.ProductShowActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".ui.auth.SignUpActivity"
             android:exported="false" />
