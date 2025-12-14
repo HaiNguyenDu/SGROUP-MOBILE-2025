@@ -5,7 +5,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.sgroupmobile2025.data.model.Message
 import com.example.sgroupmobile2025.ui.fragment.model.Poster
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 
 class FragmentViewModel(): ViewModel() {
@@ -15,6 +17,9 @@ class FragmentViewModel(): ViewModel() {
 
     private val _currentItem = MutableStateFlow(false)
     val currentItem: StateFlow<Boolean> = _currentItem
+
+    private val _showDialog = MutableSharedFlow<String>()
+    val showDialog: SharedFlow<String> = _showDialog
 
     fun addPoster(title: String, image: String) {
         val index = Poster.getIndexByTitle(title)
@@ -36,5 +41,9 @@ class FragmentViewModel(): ViewModel() {
     }
     fun setCurrentItem() {
         _currentItem.value = true
+    }
+
+    suspend fun triggerDialog(message: String) {
+        _showDialog.emit(message)
     }
 }

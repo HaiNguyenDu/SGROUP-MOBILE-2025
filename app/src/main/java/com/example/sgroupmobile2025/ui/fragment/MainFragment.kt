@@ -13,6 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import com.example.sgroupmobile2025.databinding.FragmentMainBinding
 import com.example.sgroupmobile2025.ui.fragment.adapter.MainFragmentAdater
 import kotlinx.coroutines.launch
+import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 
 class MainFragment : Fragment() {
 
@@ -29,6 +31,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         observeData()
+        showAlertDialog()
     }
     private fun initView() {
         mainAdapter = MainFragmentAdater(emptyList())                     
@@ -43,6 +46,22 @@ class MainFragment : Fragment() {
                 mainAdapter.updateImages(list)
             }
         }
+    }
+
+    private fun showAlertDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Xác nhận")
+            .setMessage("Bạn có muốn tiếp tục?")
+            .setPositiveButton("Có") { dialog, _ ->
+                Toast.makeText(context, "Chọn Có", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+            .setNegativeButton("Không") { dialog, _ ->
+                Toast.makeText(context, "Chọn Không", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+            .setCancelable(true)
+            .show()
     }
 
 }
