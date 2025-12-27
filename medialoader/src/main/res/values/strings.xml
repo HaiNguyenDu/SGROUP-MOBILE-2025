@@ -1,0 +1,8 @@
+<resources>
+    <string name="notification">Thông báo</string>
+    <string name="choose">Chọn nguồn</string>
+    <string name="cancel">Hủy</string>
+    <string name="ok">OK</string>
+    <string name="load_image">Tải ảnh lên</string>
+
+</resources>

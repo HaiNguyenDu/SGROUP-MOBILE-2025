@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.view.View
@@ -16,15 +17,18 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.sgroupmobile2025.R
+import com.example.sgroupmobile2025.common.constants.constants.CAMERA_REQUEST_CODE
+import com.example.sgroupmobile2025.common.constants.constants.GALLERY_REQUEST_CODE
 import com.example.sgroupmobile2025.data.local.LocalData
 import com.example.sgroupmobile2025.databinding.ActivityLocalImageBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.sgroup.dialog.MediaPickerDialog
+
 
 class LocalImageActivity : AppCompatActivity() {
     private val binding by lazy { ActivityLocalImageBinding.inflate(layoutInflater) }
-
+    private lateinit var mediaDialog: MediaPickerDialog
     private val imagePermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         Manifest.permission.READ_MEDIA_IMAGES
     } else {
@@ -37,7 +41,7 @@ class LocalImageActivity : AppCompatActivity() {
         when {
             granted -> {
                 binding.cardPermission.visibility = View.GONE
-                loadImages()
+                showImagePickerDialog()
             }
             shouldShowRequestPermissionRationale(imagePermission) -> showRationale()
             else -> showDialogGoToSetting()
@@ -54,11 +58,12 @@ class LocalImageActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        mediaDialog = MediaPickerDialog(this)
 
         val hasPermission = checkSelfPermission(imagePermission) ==
                 android.content.pm.PackageManager.PERMISSION_GRANTED
         if (hasPermission) {
-            loadImages()
+            showImagePickerDialog()
             binding.cardPermission.visibility = View.GONE
         } else {
             permissionLauncher.launch(imagePermission)
@@ -101,6 +106,29 @@ class LocalImageActivity : AppCompatActivity() {
             }
         }
     }
+    private fun showImagePickerDialog() {
+        mediaDialog.apply {
+            setOnCameraListener {
+                openCamera()
+            }
+
+            setOnGalleryListener {
+                loadImages()
+            }
+
+            showImagePickerDialog()
+        }
+    }
+    private fun openCamera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, CAMERA_REQUEST_CODE)
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, GALLERY_REQUEST_CODE)
+    }
+
 
     private fun showRationale() {
         AlertDialog.Builder(this)
