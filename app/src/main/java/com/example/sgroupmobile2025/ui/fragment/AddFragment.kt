@@ -9,9 +9,13 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.sgroupmobile2025.databinding.FragmentAddBinding
+import com.example.sgroupmobile2025.databinding.DialogCustomBinding
 import com.example.sgroupmobile2025.ui.fragment.model.Poster
+import kotlinx.coroutines.launch
 import kotlin.getValue
+import android.app.Dialog
 
 class AddFragment : Fragment() {
 
@@ -29,6 +33,7 @@ class AddFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         setOnClick()
+        observeDialog()
     }
     private fun initView() {
         val titles = Poster.listPosters.map { it.title }
@@ -49,10 +54,48 @@ class AddFragment : Fragment() {
                 Toast.makeText(requireContext(), "Nhap URL!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            Log.e("ddddd", viewModel.currentItem.value.toString())
             viewModel.addPoster(selectedTitle, url)
             viewModel.setCurrentItem()
+
+            lifecycleScope.launch {
+                viewModel.triggerDialog("Thêm poster thành công")
+            }
         }
 
+    }
+
+    private fun observeDialog() {
+        lifecycleScope.launch {
+            viewModel.showDialog.collect { message ->
+                showCustomDialog(message)
+            }
+        }
+    }
+
+    private fun showCustomDialog(message: String) {
+        val dialog = Dialog(requireContext())
+        val dialogBinding = DialogCustomBinding.inflate(LayoutInflater.from(requireContext()))
+        dialog.setContentView(dialogBinding.root)
+
+        dialog.window?.apply {
+            setLayout(
+                (resources.displayMetrics.widthPixels * 0.75).toInt(),
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            setBackgroundDrawableResource(android.R.color.transparent)
+        }
+
+        dialogBinding.tvMessage.text = message
+
+        dialogBinding.btnDialogConfirm.setOnClickListener {
+            binding.edtUrl.text.clear()
+            dialog.dismiss()
+        }
+
+        dialogBinding.btnDialogCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }
