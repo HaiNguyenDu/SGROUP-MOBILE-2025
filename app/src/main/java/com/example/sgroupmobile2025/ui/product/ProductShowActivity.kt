@@ -17,6 +17,7 @@ import com.example.sgroupmobile2025.ui.chat.ChatActivity
 import com.example.sgroupmobile2025.ui.contacts.ContactsActivity
 import com.example.sgroupmobile2025.ui.gallery.LocalImageActivity
 import com.example.sgroupmobile2025.ui.map.MapActivity
+import com.example.sgroupmobile2025.ui.music.MusicPlayerActivity
 import org.maplibre.android.MapLibre
 import org.maplibre.android.WellKnownTileServer
 
@@ -62,6 +63,10 @@ class ProductShowActivity : AppCompatActivity() {
         binding.icChat.setOnClickListener {
             val intentChat = Intent(this, ChatActivity::class.java)
             startActivity(intentChat)
+        }
+        binding.btnMusicPlayer.setOnClickListener {
+            val intentMusic = Intent(this, MusicPlayerActivity::class.java)
+            startActivity(intentMusic)
         }
     }
 

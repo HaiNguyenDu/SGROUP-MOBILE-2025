@@ -6,6 +6,7 @@ import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
 import com.example.sgroupmobile2025.data.model.Image
+import java.io.File
 
 class LocalData(private var context: Context) {
     suspend fun getImages(): List<Image>{
@@ -27,7 +28,7 @@ class LocalData(private var context: Context) {
                 selectionArgs,
                 "${MediaStore.Images.Media.DATE_ADDED} DESC"
             )?.use {
-                cursor ->
+                    cursor ->
                 val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
                 val dateColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATE_ADDED)
 //                val favoriteColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.IS_FAVORITE)
@@ -48,5 +49,39 @@ class LocalData(private var context: Context) {
         }
         return images
     }
+    fun getAudioFiles(): List<String> {
+        val audioList = mutableListOf<String>()
 
+        try {
+            val projection = arrayOf(
+                MediaStore.Audio.Media.DATA,
+                MediaStore.Audio.Media.TITLE
+            )
+            val cursor = context.contentResolver.query(
+                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                projection,
+                null,
+                null,
+                MediaStore.Audio.Media.DATE_MODIFIED + " DESC"
+            )
+
+            cursor?.use {
+                val columnIndex = it.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA)
+                while (it.moveToNext()) {
+                    val audioPath = it.getString(columnIndex)
+                    if (File(audioPath).exists() && File(audioPath).length() > 0) {
+                        audioList.add(audioPath)
+                    }
+                }
+            }
+
+            Log.d("LocalData", "Found ${audioList.size} audio files")
+            audioList.forEach { Log.d("LocalData", "Audio: $it") }
+
+        } catch (e: Exception) {
+            Log.e("LocalData", "Error getting audio files: ${e.message}")
+            e.printStackTrace()
+        }
+        return audioList
+    }
 }

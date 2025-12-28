@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+    implementation (libs.androidx.localbroadcastmanager)
     implementation(project(":medialoader"))
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.android.plugin.annotation.v9)
@@ -60,6 +61,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.litert)
 
     // Test
     testImplementation(libs.junit)
