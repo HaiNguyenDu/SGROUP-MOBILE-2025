@@ -1,4 +1,4 @@
-package com.sgroup.dialog
+package com.example.sgroupmobile2025.medialoader.dialog
 
 import android.app.AlertDialog
 import android.content.Context

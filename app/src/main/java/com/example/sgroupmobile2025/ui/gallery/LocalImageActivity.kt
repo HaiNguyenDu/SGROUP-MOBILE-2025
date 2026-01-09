@@ -23,7 +23,7 @@ import com.example.sgroupmobile2025.data.local.LocalData
 import com.example.sgroupmobile2025.databinding.ActivityLocalImageBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import com.sgroup.dialog.MediaPickerDialog
+import com.example.sgroupmobile2025.medialoader.dialog.MediaPickerDialog
 
 
 class LocalImageActivity : AppCompatActivity() {

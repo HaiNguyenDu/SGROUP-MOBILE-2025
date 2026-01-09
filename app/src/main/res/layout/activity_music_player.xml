@@ -3,213 +3,113 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="12dp"
     android:background="@color/white">
 
+    <!-- ===== HEADER ===== -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp">
 
         <Button
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quay lại"
-            android:backgroundTint="@color/light_pink" />
+            android:layout_height="36dp"
+            android:text="Back"
+            android:textSize="14sp"
+            android:backgroundTint="@color/light_pink"
+            android:textColor="@android:color/white"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Music Player"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#333333"
-            android:gravity="center" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:gravity="center"/>
     </LinearLayout>
 
+    <!-- ===== CURRENT TRACK ===== -->
     <TextView
         android:id="@+id/tvCurrentTrack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Chọn bài hát để phát"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="#333333"
         android:gravity="center"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="6dp"
         android:ellipsize="end"
-        android:maxLines="2" />
+        android:maxLines="2"/>
 
-    <!-- SeekBar Progress -->
+    <!-- ===== SEEK BAR ===== -->
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp" />
+        android:layout_height="wrap_content"/>
 
-    <!-- Time Display -->
+    <!-- ===== TIME ===== -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/tvCurrentTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="00:00"
             android:textSize="12sp"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:layout_height="20dp"
+            android:layout_width="40dp"/>
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/tvDuration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="00:00"
             android:textSize="12sp"
-            android:textColor="#666666" />
-
+            android:textColor="#666666"
+            android:layout_height="20dp"
+            android:layout_width="40dp"/>
     </LinearLayout>
 
-    <!-- Control Buttons -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="20dp">
 
-        <Button
-            android:id="@+id/btn_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="⏮ Trước"
-            android:textSize="12sp"
-            android:backgroundTint="@color/light_pink"
-            android:textColor="@android:color/white"
-            android:layout_marginEnd="4dp" />
-
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="▶ Phát"
-            android:textSize="12sp"
-            android:backgroundTint="@color/light_pink"
-            android:textColor="@android:color/white"
-            android:layout_marginEnd="4dp" />
-
-        <Button
-            android:id="@+id/btnPause"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="⏸ Tạm dừng"
-            android:textSize="12sp"
-            android:backgroundTint="@color/light_pink"
-            android:textColor="@android:color/white"
-            android:layout_marginEnd="4dp"
-            android:enabled="false" />
-
-        <Button
-            android:id="@+id/btnResume"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Tiếp tục"
-            android:textSize="12sp"
-            android:backgroundTint="@color/light_pink"
-            android:textColor="@android:color/white"
-            android:layout_marginEnd="4dp"
-            android:enabled="false" />
-
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Dừng"
-            android:textSize="12sp"
-            android:backgroundTint="@color/light_pink"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Tiếp"
-            android:textSize="12sp"
-            android:backgroundTint="@color/light_pink"
-            android:textColor="@android:color/white"
-            android:layout_marginStart="4dp" />
-
-    </LinearLayout>
-
-    <!-- Volume Control -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="20dp"
-        android:padding="12dp"
-        android:background="@drawable/bg_volume_section"
-        android:backgroundTint="#F5F5F5">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Âm lượng"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp" />
-
-        <SeekBar
-            android:id="@+id/volumeSlider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:max="100"
-            android:progress="100" />
-
-    </LinearLayout>
-
-    <!-- Divider -->
+    <!-- ===== DIVIDER ===== -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#EEEEEE"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp"/>
 
-    <!-- Audio List Title -->
+    <!-- ===== LIST TITLE ===== -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Danh sách bài hát"
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="#333333"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="6dp"
+        android:layout_height="20dp"
+        android:layout_width="200dp"/>
 
-    <!-- Audio List RecyclerView -->
+    <!-- ===== AUDIO LIST ===== -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_audio_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/white"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"/>
 
 </LinearLayout>

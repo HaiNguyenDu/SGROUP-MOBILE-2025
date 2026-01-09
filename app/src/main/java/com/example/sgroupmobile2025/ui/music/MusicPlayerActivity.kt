@@ -70,7 +70,6 @@ class MusicPlayerActivity : AppCompatActivity() {
             val state = intent?.getStringExtra("state")
             val position = intent?.getIntExtra("position", 0) ?: 0
             val duration = intent?.getIntExtra("duration", 0) ?: 0
-
             updateUI(state, position, duration)
         }
     }
