@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_normal">20dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="text_medium">15sp</dimen>
+    <dimen name="text_title">25sp</dimen>
+    <dimen name="banner_height">60dp</dimen>
+    <dimen name="padding_small">15dp</dimen>
+    <dimen name="text_topic">20sp</dimen>
+    <dimen name="item_music_height">50dp</dimen>
+    <dimen name="icon_size">30dp</dimen>
+    <dimen name="album_size">150dp</dimen>
+    <dimen name="text_field">20dp</dimen>
+    <dimen name="padding_tiny">5dp</dimen>
+    <dimen name="artist_size">150dp</dimen>
+</resources>

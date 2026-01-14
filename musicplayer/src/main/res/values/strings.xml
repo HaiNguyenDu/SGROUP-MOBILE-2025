@@ -1,0 +1,11 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_title">#nghe nhạc hay</string>
+    <string name="list_music">Danh sách nhạc</string>
+    <string name="album">Album</string>
+    <string name="artist">Nghệ sĩ</string>
+    <string name="favourite">Yêu thích</string>
+    <string name="music_title">Lovely</string>
+    <string name="artist_name">Billie Eilish</string>
+</resources>
