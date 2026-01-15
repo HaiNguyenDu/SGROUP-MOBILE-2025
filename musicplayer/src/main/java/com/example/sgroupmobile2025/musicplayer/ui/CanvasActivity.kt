@@ -71,7 +71,7 @@ class CanvasView(context: android.content.Context) : View(context) {
         canvas.drawArc(RectF(100f, 500f, 350f, 700f), 0f, 180f, true, paint)
 
         // bitmap
-        canvas.drawBitmap(bitmap, 850f, 100f, null)
+        canvas.drawBitmap(bitmap, 450f, 1500f, null)
 
         // path và text
         paint.color = Color.GREEN
