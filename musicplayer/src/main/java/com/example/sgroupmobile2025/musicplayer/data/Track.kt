@@ -9,6 +9,7 @@ data class Track(
     val title: String,
     val preview: String,
     val artist: Artist,
+    val duration: Int,
     val album: Album
 ) : Parcelable
 

@@ -17,6 +17,10 @@ object MusicAction {
     const val EXTRA_ARTIST = "EXTRA_ARTIST"
     const val EXTRA_IS_PLAYING = "EXTRA_IS_PLAYING"
     const val EXTRA_IMAGE = "extra_image"
+    const val EXTRA_DURATION = "extra_duration"
+    const val EXTRA_POSITION = "extra_position"
+    const val ACTION_SEEK_TO = "music.ACTION_SEEK_TO"
+    const val EXTRA_SEEK_POSITION = "extra_seek_position"
 }
 
 object Notification{

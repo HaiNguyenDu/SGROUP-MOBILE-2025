@@ -54,6 +54,7 @@ class MusicService : Service() {
             addAction(MusicAction.ACTION_NEXT)
             addAction(MusicAction.ACTION_PREV)
             addAction(MusicAction.ACTION_STOP)
+            addAction(MusicAction.ACTION_SEEK_TO)
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -98,6 +99,7 @@ class MusicService : Service() {
             currentImage = imageUrl
 
             isPlaying = true
+            sendProgress()
             showNotification(title, artist, imageUrl)
             updateUI(title, artist, imageUrl)
 
@@ -107,6 +109,26 @@ class MusicService : Service() {
 
         player.setOnCompletionListener { next() }
     }
+    private fun sendProgress() {
+        val handler = android.os.Handler(mainLooper)
+
+        handler.post(object : Runnable {
+            override fun run() {
+                if (player.isPlaying) {
+
+                    val intent = Intent(MusicAction.ACTION_UPDATE_UI).apply {
+                        putExtra(MusicAction.EXTRA_POSITION, player.currentPosition)
+                        putExtra(MusicAction.EXTRA_DURATION, player.duration)
+                        putExtra(MusicAction.EXTRA_IS_PLAYING, isPlaying)
+                        setPackage(packageName)
+                    }
+                    sendBroadcast(intent)
+                }
+                handler.postDelayed(this, 1000)
+            }
+        })
+    }
+
 
     private fun pause() {
         if (!player.isPlaying) return
@@ -164,6 +186,17 @@ class MusicService : Service() {
                     )
                     playByIndex(index)
                 }
+
+                MusicAction.ACTION_SEEK_TO -> {
+                    val pos = intent.getIntExtra(
+                        MusicAction.EXTRA_SEEK_POSITION,
+                        0
+                    )
+                    if (pos in 0..player.duration) {
+                        player.seekTo(pos)
+                    }
+                }
+
 
                 MusicAction.ACTION_PLAY -> resume()
                 MusicAction.ACTION_PAUSE -> pause()

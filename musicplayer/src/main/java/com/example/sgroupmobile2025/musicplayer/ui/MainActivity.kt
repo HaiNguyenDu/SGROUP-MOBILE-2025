@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private var isPlaying = false
+    private var currentTitle: String? = null
+    private var currentArtist: String? = null
+    private var currentImage: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         setupMiniPlayer()
     }
 
-    // ================= MINI PLAYER =================
 
     private fun setupMiniPlayer() {
 
@@ -53,20 +55,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.miniPlayer.setOnClickListener {
-            startActivity(Intent(this, DetailActivity::class.java))
+            val intent = Intent(this, DetailActivity::class.java).apply {
+                putExtra(MusicAction.EXTRA_TITLE, currentTitle)
+                putExtra(MusicAction.EXTRA_ARTIST, currentArtist)
+                putExtra(MusicAction.EXTRA_IMAGE, currentImage)
+                putExtra(MusicAction.EXTRA_IS_PLAYING, isPlaying)
+            }
+            startActivity(intent)
         }
     }
 
-    // ================= SEND BROADCAST =================
 
     private fun sendAction(action: String) {
         val intent = Intent(action).apply {
-            setPackage(packageName)   // 🔴 bắt buộc để Service nhận
+            setPackage(packageName)
         }
         sendBroadcast(intent)
     }
 
-    // ================= RECEIVE UI UPDATE =================
 
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     override fun onStart() {
@@ -88,27 +94,28 @@ class MainActivity : AppCompatActivity() {
     private val uiReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
 
-            val title = intent?.getStringExtra(MusicAction.EXTRA_TITLE)
-            val artist = intent?.getStringExtra(MusicAction.EXTRA_ARTIST)
-            val image = intent?.getStringExtra(MusicAction.EXTRA_IMAGE)
+            currentTitle = intent?.getStringExtra(MusicAction.EXTRA_TITLE)
+            currentArtist = intent?.getStringExtra(MusicAction.EXTRA_ARTIST)
+            currentImage = intent?.getStringExtra(MusicAction.EXTRA_IMAGE)
+
             isPlaying = intent?.getBooleanExtra(
                 MusicAction.EXTRA_IS_PLAYING,
                 false
             ) ?: false
 
-            if (!title.isNullOrEmpty()) {
+            if (!currentTitle.isNullOrEmpty()) {
                 binding.miniPlayer.visibility = View.VISIBLE
-                binding.tvSongName.text = title
-                binding.tvArtist.text = artist ?: ""
+                binding.tvSongName.text = currentTitle
+                binding.tvArtist.text = currentArtist ?: ""
             }
-            if(!image.isNullOrEmpty()){
+
+            if (!currentImage.isNullOrEmpty()) {
                 Glide.with(binding.root)
-                    .load(image)
+                    .load(currentImage)
                     .placeholder(R.drawable.ic_music)
                     .into(binding.imgSong)
             }
 
-            // 🔴 đổi icon Play / Pause
             binding.btnPlay.setImageResource(
                 if (isPlaying)
                     R.drawable.ic_pause
@@ -116,9 +123,9 @@ class MainActivity : AppCompatActivity() {
                     R.drawable.ic_play
             )
         }
+
     }
 
-    // ================= UI SETUP =================
 
     private fun viewCompat() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
