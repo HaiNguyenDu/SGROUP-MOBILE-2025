@@ -4,9 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient">
+    android:background="@drawable/background">
 
-    <!-- Back button -->
     <ImageButton
         android:id="@+id/btn_back"
         android:layout_width="40dp"
@@ -18,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Album shadow -->
     <View
         android:id="@+id/shadow_album"
         android:layout_width="280dp"
@@ -29,7 +27,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Album Art -->
     <ImageView
         android:id="@+id/img_album"
         android:layout_width="260dp"
@@ -43,7 +40,6 @@
         app:layout_constraintStart_toStartOf="@id/shadow_album"
         app:layout_constraintEnd_toEndOf="@id/shadow_album"/>
 
-    <!-- Song title -->
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="0dp"
@@ -58,7 +54,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Artist -->
     <TextView
         android:id="@+id/tv_artist"
         android:layout_width="0dp"
@@ -72,7 +67,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Progress -->
     <SeekBar
         android:id="@+id/seek_bar"
         android:layout_width="0dp"
@@ -86,7 +80,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Time -->
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
@@ -98,7 +91,6 @@
         app:layout_constraintTop_toBottomOf="@id/seek_bar"
         app:layout_constraintStart_toStartOf="@id/seek_bar"/>
 
-    <!-- Control buttons -->
     <LinearLayout
         android:id="@+id/layout_controls"
         android:layout_width="wrap_content"
@@ -123,7 +115,8 @@
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_marginHorizontal="20dp"
-            android:src="@drawable/ic_play_circle"
+            android:src="@drawable/ic_play"
+            app:tint="@android:color/white"
             android:background="@drawable/bg_circle"/>
 
         <ImageButton

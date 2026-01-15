@@ -12,6 +12,8 @@ import androidx.lifecycle.*
 import androidx.recyclerview.widget.*
 import com.example.sgroupmobile2025.musicplayer.adapter.*
 import com.example.sgroupmobile2025.musicplayer.constants.MusicAction
+import com.example.sgroupmobile2025.musicplayer.data.Album
+import com.example.sgroupmobile2025.musicplayer.data.Artist
 import com.example.sgroupmobile2025.musicplayer.data.Track
 import com.example.sgroupmobile2025.musicplayer.databinding.FragmentHomeBinding
 import com.example.sgroupmobile2025.musicplayer.service.MusicService
@@ -28,9 +30,12 @@ class HomeFragment : Fragment() {
         requireContext().sendBroadcast(intent)
     }
 
-    private val albumAdapter = AlbumAdapter(emptyList())
-    private val artistAdapter = ArtistAdapter(emptyList())
-
+    private val albumAdapter = AlbumAdapter(emptyList()){ album ->
+        openAlbumDetail(album)
+    }
+    private val artistAdapter = ArtistAdapter(emptyList()){ artist ->
+        openArtistDetail(artist)
+    }
     private val viewModel: MusicViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -47,7 +52,7 @@ class HomeFragment : Fragment() {
             requireContext().startService(serviceIntent)
         }
         setUpRecyclerView()
-        viewModel.loadData()
+        viewModel.loadHomeData()
         observeData()
     }
 
@@ -56,7 +61,7 @@ class HomeFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
 
                 launch {
-                    viewModel.track.collect { list ->
+                    viewModel.tracks.collect { list ->
                         trackAdapter.updateTracks(list)
                         sendPlaylistToService(list)
                     }
@@ -101,4 +106,26 @@ class HomeFragment : Fragment() {
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         binding.rvAlbum.adapter = albumAdapter
     }
+    private fun openAlbumDetail(album: Album) {
+        val intent = Intent(requireContext(), MainDetailList::class.java).apply {
+            putExtra("TYPE", "ALBUM")
+            putExtra("ID", album.id)
+            putExtra("TITLE", album.title)
+            putExtra("SUB", "Album")
+            putExtra("IMAGE", album.coverMedium)
+        }
+        startActivity(intent)
+    }
+    private fun openArtistDetail(artist: Artist) {
+        val intent = Intent(requireContext(), MainDetailList::class.java).apply {
+            putExtra("TYPE", "ARTIST")
+            putExtra("ID", artist.id)
+            putExtra("TITLE", artist.name)
+            putExtra("SUB", "Nghệ sĩ")
+            putExtra("IMAGE", artist.pictureMedium)
+        }
+        startActivity(intent)
+    }
+
+
 }

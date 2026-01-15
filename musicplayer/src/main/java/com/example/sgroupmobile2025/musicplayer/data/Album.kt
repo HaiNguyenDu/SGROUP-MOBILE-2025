@@ -14,3 +14,15 @@ data class Album(
 data class AlbumResponse(
     val data: List<Album>
 )
+
+data class AlbumDetailResponse(
+    val id: Long,
+    val title: String,
+
+    @SerializedName("cover_medium")
+    val coverMedium: String,
+
+    val artist: Artist,
+
+    val tracks: TrackResponse
+)

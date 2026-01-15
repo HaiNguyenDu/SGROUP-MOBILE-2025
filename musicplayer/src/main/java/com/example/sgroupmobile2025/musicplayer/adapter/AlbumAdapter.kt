@@ -8,7 +8,10 @@ import com.bumptech.glide.Glide
 import com.example.sgroupmobile2025.musicplayer.data.Album
 import com.example.sgroupmobile2025.musicplayer.databinding.ItemAlbumBinding
 
-class AlbumAdapter(private var albums: List<Album>): RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
+class AlbumAdapter(
+    private var albums: List<Album>,
+    private val onClick: (Album) -> Unit
+): RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -32,12 +35,15 @@ class AlbumAdapter(private var albums: List<Album>): RecyclerView.Adapter<AlbumA
         notifyDataSetChanged()
     }
 
-    class ViewHolder(val binding: ItemAlbumBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding: ItemAlbumBinding): RecyclerView.ViewHolder(binding.root){
         fun onHolder(album: Album){
             Glide.with(binding.root)
                 .load(album.coverMedium)
                 .into(binding.imAlbum)
             binding.tvAlbumTitle.text = album.title
+            binding.root.setOnClickListener {
+                onClick(album)
+            }
         }
     }
 }

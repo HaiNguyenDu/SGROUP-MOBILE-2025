@@ -15,3 +15,15 @@ data class Artist(
 data class ArtistResponse(
     val data: List<Artist>
 )
+
+
+data class ArtistDetailResponse(
+    val id: Long,
+    val name: String,
+
+    @SerializedName("picture_medium")
+    val pictureMedium: String,
+
+    @SerializedName("nb_fan")
+    val nbFan: Int
+)

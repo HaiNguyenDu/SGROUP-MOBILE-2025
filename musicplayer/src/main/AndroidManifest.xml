@@ -13,13 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ui.MainDetailList"
+            android:exported="false" />
+        <activity
             android:name=".ui.DetailActivity"
             android:exported="false" />
 
         <service
             android:name=".service.MusicService"
             android:exported="false"
-            android:foregroundServiceType="mediaPlayback"/>
+            android:foregroundServiceType="mediaPlayback" />
 
         <activity
             android:name=".ui.MainActivity"
