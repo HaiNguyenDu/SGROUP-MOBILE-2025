@@ -26,7 +26,6 @@ class MusicViewModel: ViewModel() {
                 _tracks.value = repo.getTopTracks()
                 _albums.value = repo.getTopAlbums()
                 _artists.value = repo.getTopArtists()
-                Log.e("dataaaaaa", _albums.value.toString())
             } catch (e: Exception) {
                 e.printStackTrace()
             }

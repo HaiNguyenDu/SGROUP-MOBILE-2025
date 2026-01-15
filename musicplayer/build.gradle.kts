@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.media)
     implementation(libs.androidx.localbroadcastmanager)
     implementation(libs.androidx.fragment.ktx.v171)
     implementation(libs.glide)

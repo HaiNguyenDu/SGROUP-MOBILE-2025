@@ -1,32 +1,31 @@
 package com.example.sgroupmobile2025.musicplayer.ui
 
 import android.content.*
+import android.content.pm.ServiceInfo
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.*
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.*
 import com.example.sgroupmobile2025.musicplayer.adapter.*
 import com.example.sgroupmobile2025.musicplayer.constants.MusicAction
+import com.example.sgroupmobile2025.musicplayer.data.Track
 import com.example.sgroupmobile2025.musicplayer.databinding.FragmentHomeBinding
 import com.example.sgroupmobile2025.musicplayer.service.MusicService
 import com.example.sgroupmobile2025.musicplayer.viewmodel.MusicViewModel
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
-
     private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
-
     private val trackAdapter = TrackAdapter(emptyList()) { index ->
         val intent = Intent(MusicAction.ACTION_PLAY_BY_INDEX).apply {
             putExtra(MusicAction.EXTRA_INDEX, index)
+            setPackage(requireContext().packageName)
         }
-
-        LocalBroadcastManager
-            .getInstance(requireContext())
-            .sendBroadcast(intent)
+        requireContext().sendBroadcast(intent)
     }
 
     private val albumAdapter = AlbumAdapter(emptyList())
@@ -41,11 +40,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // BẮT BUỘC start service trước
         val serviceIntent = Intent(requireContext(), MusicService::class.java)
-        requireContext().startService(serviceIntent)
-
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            requireContext().startForegroundService(serviceIntent)
+        } else{
+            requireContext().startService(serviceIntent)
+        }
         setUpRecyclerView()
         viewModel.loadData()
         observeData()
@@ -77,17 +77,16 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun sendPlaylistToService(list: List<com.example.sgroupmobile2025.musicplayer.data.Track>) {
+    private fun sendPlaylistToService(list: List<Track>) {
         val intent = Intent(MusicAction.ACTION_SET_PLAYLIST).apply {
             putParcelableArrayListExtra(
                 MusicAction.EXTRA_PLAYLIST,
                 ArrayList(list)
             )
+            setPackage(requireContext().packageName)
         }
-
-        LocalBroadcastManager
-            .getInstance(requireContext())
-            .sendBroadcast(intent)
+        requireContext().sendBroadcast(intent)
+        Log.e("dataaaaaa", "da gui nha")
     }
 
     private fun setUpRecyclerView() {

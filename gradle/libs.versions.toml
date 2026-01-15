@@ -24,6 +24,7 @@ material = "1.13.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
 materialVersion = "1.11.0"
+media = "1.7.1"
 retrofit = "3.0.0"
 retrofitVersion = "2.9.0"
 
@@ -38,6 +39,7 @@ androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-view
 androidx-lifecycle-viewmodel-ktx-v270 = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidxLifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx-v280 = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtxVersion" }
 androidx-localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "localbroadcastmanager" }
+androidx-media = { module = "androidx.media:media", version.ref = "media" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 converter-gson-v290 = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
