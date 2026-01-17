@@ -3,6 +3,7 @@ package com.example.sgroupmobile2025.musicplayer.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sgroupmobile2025.musicplayer.data.Track
 import com.example.sgroupmobile2025.musicplayer.databinding.ItemMusicBinding
 
@@ -37,6 +38,11 @@ class TrackAdapter(
         fun bind(position: Int, onPlayClick: (Int) -> Unit) {
             binding.tvMusicTitle.text = tracks[position].title
             binding.tvArtistName.text = tracks[position].artist.name
+
+            Glide.with(binding.root)
+                .load(tracks[position].album.coverMedium)
+                .into(binding.ivAlbumArt)
+            binding.tvDuration.text = tracks[position].duration.toString()
 
             binding.root.setOnClickListener {
                 onPlayClick(position)

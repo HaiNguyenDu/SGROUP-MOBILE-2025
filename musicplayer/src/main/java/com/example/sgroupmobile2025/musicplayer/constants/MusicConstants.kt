@@ -21,6 +21,7 @@ object MusicAction {
     const val EXTRA_POSITION = "extra_position"
     const val ACTION_SEEK_TO = "music.ACTION_SEEK_TO"
     const val EXTRA_SEEK_POSITION = "extra_seek_position"
+
 }
 
 object Notification{

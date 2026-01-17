@@ -50,14 +50,10 @@ class MainDetailList : AppCompatActivity() {
 
     private fun setupHeader() {
 
-        binding.btnBack.setOnClickListener { finish() }
+//        binding.btnBack.setOnClickListener { finish() }
 
-        val title = intent.getStringExtra("TITLE") ?: ""
-        val sub = intent.getStringExtra("SUB") ?: ""
         val image = intent.getStringExtra("IMAGE")
 
-        binding.tvTitle.text = title
-        binding.tvSub.text = sub
 
         if (!image.isNullOrEmpty()) {
             Glide.with(this)
