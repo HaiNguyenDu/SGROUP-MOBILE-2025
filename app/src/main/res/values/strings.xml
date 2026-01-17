@@ -47,7 +47,6 @@
     <string name="chat_title">Nhắn tin</string>
     <string name="chat_description">Send</string>
     <string name="chat_hint">Nhập tin nhắn</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="poster_title">Poster</string>
 

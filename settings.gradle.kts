@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "SgroupMobile2025"
 include(":app")
- 
+include(":medialoader")
+include(":musicplayer")

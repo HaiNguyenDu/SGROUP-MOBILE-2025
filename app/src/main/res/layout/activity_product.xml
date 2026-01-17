@@ -137,7 +137,27 @@
         app:icon="@drawable/ic_map"
         app:iconGravity="textStart"
         app:iconPadding="@dimen/size_zero"
+        app:layout_constraintBottom_toTopOf="@id/btn_music_player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_music_player"
+        android:layout_width="@dimen/size_box"
+        android:layout_height="@dimen/size_box"
+        android:layout_marginEnd="@dimen/margin_largest"
+        android:layout_marginBottom="@dimen/margin_x_large"
+        android:backgroundTint="@color/light_pink"
+        android:insetLeft="@dimen/size_zero"
+        android:insetTop="@dimen/size_zero"
+        android:insetRight="@dimen/size_zero"
+        android:insetBottom="@dimen/size_zero"
+        app:cornerRadius="@dimen/radius_large"
+        app:icon="@drawable/ic_music_note"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/size_zero"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
