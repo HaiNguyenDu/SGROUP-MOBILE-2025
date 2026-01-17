@@ -50,7 +50,6 @@ class CanvasView(context: android.content.Context) : View(context) {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
         canvas.drawColor(Color.parseColor("#F0F0F0")) // màu xám
 
         // hình học

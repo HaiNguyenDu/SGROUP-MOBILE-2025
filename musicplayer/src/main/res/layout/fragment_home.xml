@@ -10,77 +10,103 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background"
+        android:background="@color/background_color"
         android:padding="@dimen/padding_normal"
         tools:context=".ui.HomeFragment">
 
-        <!-- Title -->
+
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_hello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/home_title"
+            android:text="Hello Vini,"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="@dimen/text_title"
-            android:textColor="@color/primary_color"
+            android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <!-- Banner -->
-        <ImageView
-            android:id="@+id/iv_banner"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/banner_height"
-            android:layout_marginVertical="@dimen/padding_small"
-            android:src="@drawable/homebanner"
-            android:scaleType="centerCrop"
-            android:background="@drawable/bg_round"
-            android:clipToOutline="true"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"/>
-
-        <!-- Music title -->
         <TextView
-            android:id="@+id/tv_music"
+            android:id="@+id/tv_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/list_music"
-            android:layout_marginTop="@dimen/padding_normal"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_title"
-            android:textColor="@color/secondary_color"
-            app:layout_constraintTop_toBottomOf="@id/iv_banner"
+            android:text="What you want to hear today ?"
+            android:textSize="14sp"
+            android:textColor="#BFFFFFFF"
+            app:layout_constraintTop_toBottomOf="@id/tv_hello"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <!-- Music list -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_music"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
-            app:layout_constraintTop_toBottomOf="@id/tv_music"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_container"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_search"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Album title -->
+            <ImageView
+                android:id="@+id/ic_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search"
+                android:layout_marginStart="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="#80000000" />
+
+            <EditText
+                android:id="@+id/edt_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Search"
+                android:background="@null"
+                android:textColor="@color/black"
+                android:textColorHint="#80000000"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                app:layout_constraintStart_toEndOf="@id/ic_search"
+                app:layout_constraintEnd_toStartOf="@id/ic_mic"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/ic_mic"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_mic"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="#80000000" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         <TextView
             android:id="@+id/tv_album"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/album"
-            android:layout_marginTop="@dimen/padding_normal"
+            android:layout_marginTop="24dp"
             android:textStyle="bold"
             android:textSize="@dimen/text_title"
-            android:textColor="@color/secondary_color"
-            app:layout_constraintTop_toBottomOf="@id/rv_music"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/search_container"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <!-- Album list -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_album"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
             android:nestedScrollingEnabled="false"
             app:layout_constraintTop_toBottomOf="@id/tv_album"/>
 
-        <!-- Artist title -->
+
         <TextView
             android:id="@+id/tv_artist"
             android:layout_width="wrap_content"
@@ -89,17 +115,37 @@
             android:layout_marginTop="@dimen/padding_normal"
             android:textStyle="bold"
             android:textSize="@dimen/text_title"
-            android:textColor="@color/secondary_color"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/rv_album"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <!-- Artist list -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_artist"
+            android:layout_marginTop="@dimen/padding_small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
             app:layout_constraintTop_toBottomOf="@id/tv_artist"/>
+
+
+        <TextView
+            android:id="@+id/tv_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/list_music"
+            android:layout_marginTop="@dimen/padding_normal"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_title"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/rv_artist"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintTop_toBottomOf="@id/tv_music"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

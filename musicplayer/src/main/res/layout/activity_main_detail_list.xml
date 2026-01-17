@@ -4,81 +4,64 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="#12121B"> <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    app:elevation="0dp">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="360dp"
-        android:background="@android:color/transparent"
+        android:layout_height="250dp"
+        android:padding="16dp"
         app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/btnFavorite"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_heart"
+            android:background="@drawable/bg_circle"
+            app:tint="#00F2EA"
+            app:layout_constraintBottom_toBottomOf="@+id/imgHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgHeader" />
+        <ImageView
+            android:id="@+id/imgHeader"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/album"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_circle"
+            android:clipToOutline="true"
+            app:strokeColor="#55FFFFFF"/>
 
-            <ImageView
-                android:id="@+id/imgHeader"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"/>
+        <ImageButton
+            android:id="@+id/btnMore"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_circle"
+            android:src="@drawable/ic_more"
+            app:tint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/imgHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgHeader" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="16dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_back"
-                app:tint="@android:color/white"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:padding="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:text="Sơn Tùng M-TP"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/tvSub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2,1 Tr người nghe hàng tháng"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp"/>
-
-                <ImageButton
-                    android:id="@+id/btnPlayAll"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/bg_circle_green"
-                    android:src="@drawable/ic_play"
-                    app:tint="@android:color/white"/>
-            </LinearLayout>
-
-        </FrameLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSongs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:padding="12dp"
         android:clipToPadding="false"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

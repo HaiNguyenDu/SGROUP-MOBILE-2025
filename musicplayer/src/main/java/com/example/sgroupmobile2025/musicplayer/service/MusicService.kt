@@ -8,9 +8,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.media.AudioManager
 import android.media.MediaPlayer
-import android.os.Build
-import android.os.IBinder
-import android.util.Log
+import android.os.*
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import com.bumptech.glide.Glide
@@ -25,7 +23,7 @@ import com.example.sgroupmobile2025.musicplayer.ui.MainActivity
 
 class MusicService : Service() {
 
-    private lateinit var player: MediaPlayer
+    private var player: MediaPlayer? = null
     private var playlist: List<Track> = emptyList()
     private var currentIndex = -1
     private var isPlaying = false
@@ -34,8 +32,10 @@ class MusicService : Service() {
     private var currentArtist: String? = null
     private var currentImage: String? = null
 
-    override fun onBind(intent: Intent?): IBinder? = null
+    private val handler = Handler(Looper.getMainLooper())
+    private var progressRunnable: Runnable? = null
 
+    override fun onBind(intent: Intent?): IBinder? = null
 
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     override fun onCreate() {
@@ -43,7 +43,6 @@ class MusicService : Service() {
 
         player = MediaPlayer()
         createNotificationChannel()
-
         startForeground(1, buildEmptyNotification())
 
         val filter = IntentFilter().apply {
@@ -66,21 +65,19 @@ class MusicService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        try { player.release() } catch (_: Exception) {}
+
+        stopProgress()
+        try {
+            player?.release()
+        } catch (_: Exception) {}
+
+        player = null
         unregisterReceiver(actionReceiver)
     }
 
 
-    private fun buildEmptyNotification(): Notification =
-        NotificationCompat.Builder(this, CHANNEL_MUSIC_ID)
-            .setSmallIcon(R.drawable.ic_music)
-            .setContentTitle("Music Player")
-            .setOngoing(true)
-            .build()
-
-
     private fun playByIndex(index: Int) {
-        if (index < 0 || index >= playlist.size) return
+        if (index !in playlist.indices) return
         currentIndex = index
         val track = playlist[index]
         play(track.preview, track.title, track.artist.name, track.album.coverMedium)
@@ -88,65 +85,61 @@ class MusicService : Service() {
 
     private fun play(url: String, title: String, artist: String, imageUrl: String?) {
         try {
-            player.reset()
-            player.setAudioStreamType(AudioManager.STREAM_MUSIC)
-            player.setDataSource(url)
-            player.prepare()
-            player.start()
+            player?.reset()
+            player?.setAudioStreamType(AudioManager.STREAM_MUSIC)
+            player?.setDataSource(url)
+            player?.prepare()
+            player?.start()
 
             currentTitle = title
             currentArtist = artist
             currentImage = imageUrl
-
             isPlaying = true
-            sendProgress()
+
+            startProgress()
             showNotification(title, artist, imageUrl)
             updateUI(title, artist, imageUrl)
+
+            player?.setOnCompletionListener { next() }
 
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
-        player.setOnCompletionListener { next() }
     }
-    private fun sendProgress() {
-        val handler = android.os.Handler(mainLooper)
-
-        handler.post(object : Runnable {
-            override fun run() {
-                if (player.isPlaying) {
-
-                    val intent = Intent(MusicAction.ACTION_UPDATE_UI).apply {
-                        putExtra(MusicAction.EXTRA_POSITION, player.currentPosition)
-                        putExtra(MusicAction.EXTRA_DURATION, player.duration)
-                        putExtra(MusicAction.EXTRA_IS_PLAYING, isPlaying)
-                        setPackage(packageName)
-                    }
-                    sendBroadcast(intent)
-                }
-                handler.postDelayed(this, 1000)
-            }
-        })
-    }
-
 
     private fun pause() {
-        if (!player.isPlaying) return
-        player.pause()
+        if (player?.isPlaying != true) return
+        player?.pause()
         isPlaying = false
-
         showNotification(currentTitle, currentArtist, currentImage)
         updateUI()
     }
 
     private fun resume() {
-        if (player.isPlaying) return
-        player.start()
+        if (player?.isPlaying == true) return
+        player?.start()
         isPlaying = true
-
         showNotification(currentTitle, currentArtist, currentImage)
         updateUI()
     }
+
+    private fun stopMusic() {
+        stopProgress()
+
+        try {
+            player?.pause()
+            player?.seekTo(0)
+        } catch (_: Exception) {}
+
+        isPlaying = false
+        currentTitle = null
+        currentArtist = null
+        currentImage = null
+
+        updateUI()
+
+    }
+
 
     private fun next() {
         if (playlist.isEmpty()) return
@@ -155,48 +148,55 @@ class MusicService : Service() {
 
     private fun prev() {
         if (playlist.isEmpty()) return
-        val prevIndex =
-            if (currentIndex - 1 < 0) playlist.size - 1
-            else currentIndex - 1
-        playByIndex(prevIndex)
+        val index = if (currentIndex - 1 < 0) playlist.lastIndex else currentIndex - 1
+        playByIndex(index)
     }
 
-    private fun stopMusic() {
-        try { player.stop() } catch (_: Exception) {}
-        isPlaying = false
-        updateUI()
-        stopSelf()
+
+    private fun startProgress() {
+        stopProgress()
+        progressRunnable = object : Runnable {
+            override fun run() {
+                if (player != null && player!!.isPlaying) {
+                    val intent = Intent(MusicAction.ACTION_UPDATE_UI).apply {
+                        putExtra(MusicAction.EXTRA_POSITION, player!!.currentPosition)
+                        putExtra(MusicAction.EXTRA_DURATION, player!!.duration)
+                        putExtra(MusicAction.EXTRA_IS_PLAYING, isPlaying)
+                        setPackage(packageName)
+                    }
+                    sendBroadcast(intent)
+                    handler.postDelayed(this, 1000)
+                }
+            }
+        }
+        handler.post(progressRunnable!!)
+    }
+
+    private fun stopProgress() {
+        progressRunnable?.let { handler.removeCallbacks(it) }
+        progressRunnable = null
     }
 
 
     private val actionReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-
             when (intent?.action) {
+
                 MusicAction.ACTION_SET_PLAYLIST -> {
-                    val list = intent.getParcelableArrayListExtra<Track>(
+                    intent.getParcelableArrayListExtra<Track>(
                         MusicAction.EXTRA_PLAYLIST
-                    )
-                    if (list != null) playlist = list
+                    )?.let { playlist = it }
                 }
 
-                MusicAction.ACTION_PLAY_BY_INDEX -> {
-                    val index = intent.getIntExtra(
-                        MusicAction.EXTRA_INDEX, -1
-                    )
-                    playByIndex(index)
-                }
+                MusicAction.ACTION_PLAY_BY_INDEX ->
+                    playByIndex(intent.getIntExtra(MusicAction.EXTRA_INDEX, -1))
 
                 MusicAction.ACTION_SEEK_TO -> {
-                    val pos = intent.getIntExtra(
-                        MusicAction.EXTRA_SEEK_POSITION,
-                        0
-                    )
-                    if (pos in 0..player.duration) {
-                        player.seekTo(pos)
+                    val pos = intent.getIntExtra(MusicAction.EXTRA_SEEK_POSITION, 0)
+                    if (player != null && pos in 0..player!!.duration) {
+                        player!!.seekTo(pos)
                     }
                 }
-
 
                 MusicAction.ACTION_PLAY -> resume()
                 MusicAction.ACTION_PAUSE -> pause()
@@ -213,51 +213,32 @@ class MusicService : Service() {
         artist: String? = null,
         imageUrl: String? = null
     ) {
-        val intent = Intent(MusicAction.ACTION_UPDATE_UI).apply {
-            putExtra(MusicAction.EXTRA_TITLE, title)
-            putExtra(MusicAction.EXTRA_ARTIST, artist)
-            putExtra(MusicAction.EXTRA_IS_PLAYING, isPlaying)
-            putExtra(MusicAction.EXTRA_IMAGE, imageUrl)
-            setPackage(packageName)
-        }
-        sendBroadcast(intent)
-    }
-
-
-    private fun prevPendingIntent() =
-        PendingIntent.getBroadcast(
-            this, 1,
-            Intent(MusicAction.ACTION_PREV).apply { setPackage(packageName) },
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-
-    private fun playPendingIntent(): PendingIntent {
-        val action =
-            if (isPlaying) MusicAction.ACTION_PAUSE
-            else MusicAction.ACTION_PLAY
-
-        return PendingIntent.getBroadcast(
-            this, 2,
-            Intent(action).apply { setPackage(packageName) },
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        sendBroadcast(
+            Intent(MusicAction.ACTION_UPDATE_UI).apply {
+                putExtra(MusicAction.EXTRA_TITLE, title)
+                putExtra(MusicAction.EXTRA_ARTIST, artist)
+                putExtra(MusicAction.EXTRA_IS_PLAYING, isPlaying)
+                putExtra(MusicAction.EXTRA_IMAGE, imageUrl)
+                setPackage(packageName)
+            }
         )
     }
 
-    private fun nextPendingIntent() =
-        PendingIntent.getBroadcast(
-            this, 3,
-            Intent(MusicAction.ACTION_NEXT).apply { setPackage(packageName) },
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-    private fun showNotification(
-        title: String?,
-        artist: String?,
-        imageUrl: String?
-    ) {
+
+    private fun buildEmptyNotification(): Notification =
+        NotificationCompat.Builder(this, CHANNEL_MUSIC_ID)
+            .setSmallIcon(R.drawable.ic_music)
+            .setContentTitle("Music Player")
+            .setOngoing(true)
+            .build()
+
+    private fun showNotification(title: String?, artist: String?, imageUrl: String?) {
         if (imageUrl.isNullOrEmpty()) {
-            val defaultBitmap =
+            buildAndShowNotification(
+                title,
+                artist,
                 BitmapFactory.decodeResource(resources, R.drawable.ic_music)
-            buildAndShowNotification(title, artist, defaultBitmap)
+            )
             return
         }
 
@@ -278,10 +259,9 @@ class MusicService : Service() {
     private fun buildAndShowNotification(
         title: String?,
         artist: String?,
-        albumBitmap: Bitmap?
+        bitmap: Bitmap?
     ) {
-        val notification = buildCustomNotification(title, artist, albumBitmap)
-        startForeground(1, notification)
+        startForeground(1, buildCustomNotification(title, artist, bitmap))
     }
 
     private fun buildCustomNotification(
@@ -290,61 +270,77 @@ class MusicService : Service() {
         albumBitmap: Bitmap?
     ): Notification {
 
-        val smallRv = RemoteViews(packageName, R.layout.notification_music_small)
-        val bigRv   = RemoteViews(packageName, R.layout.notification_music_custom)
+        val small = RemoteViews(packageName, R.layout.notification_music_small)
+        val big = RemoteViews(packageName, R.layout.notification_music_custom)
 
-        smallRv.setTextViewText(R.id.tvTitle, title ?: "Unknown")
-        bigRv.setTextViewText(R.id.tvTitle, title ?: "Unknown")
-        bigRv.setTextViewText(R.id.tvArtist, artist ?: "")
+        small.setTextViewText(R.id.tvTitle, title ?: "Unknown")
+        big.setTextViewText(R.id.tvTitle, title ?: "Unknown")
+        big.setTextViewText(R.id.tvArtist, artist ?: "")
 
-        if (albumBitmap != null) {
-            smallRv.setImageViewBitmap(R.id.imgAlbum, albumBitmap)
-            bigRv.setImageViewBitmap(R.id.imgAlbum, albumBitmap)
-            bigRv.setImageViewBitmap(R.id.imgBackground, albumBitmap)
+        albumBitmap?.let {
+            small.setImageViewBitmap(R.id.imgAlbum, it)
+            big.setImageViewBitmap(R.id.imgAlbum, it)
+            big.setImageViewBitmap(R.id.imgBackground, it)
         }
 
-        val playIcon =
-            if (isPlaying) R.drawable.ic_pause
-            else R.drawable.ic_play
+        val playIcon = if (isPlaying) R.drawable.ic_pause else R.drawable.ic_play
+        small.setImageViewResource(R.id.btn_play_noti, playIcon)
+        big.setImageViewResource(R.id.btn_play_noti, playIcon)
 
-        smallRv.setImageViewResource(R.id.btn_play_noti, playIcon)
-        bigRv.setImageViewResource(R.id.btn_play_noti, playIcon)
+        small.setOnClickPendingIntent(R.id.btn_play_noti, playPendingIntent())
+        big.setOnClickPendingIntent(R.id.btn_prev_noti, prevPendingIntent())
+        big.setOnClickPendingIntent(R.id.btn_play_noti, playPendingIntent())
+        big.setOnClickPendingIntent(R.id.btn_next_noti, nextPendingIntent())
 
-        smallRv.setOnClickPendingIntent(R.id.btn_play_noti, playPendingIntent())
-
-        bigRv.setOnClickPendingIntent(R.id.btn_prev_noti, prevPendingIntent())
-        bigRv.setOnClickPendingIntent(R.id.btn_play_noti, playPendingIntent())
-        bigRv.setOnClickPendingIntent(R.id.btn_next_noti, nextPendingIntent())
-
-        val openAppIntent = Intent(this, MainActivity::class.java)
-        val contentPendingIntent = PendingIntent.getActivity(
-            this, 0, openAppIntent,
+        val openApp = PendingIntent.getActivity(
+            this, 0,
+            Intent(this, MainActivity::class.java),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
         return NotificationCompat.Builder(this, CHANNEL_MUSIC_ID)
             .setSmallIcon(R.drawable.ic_music)
-            .setContentIntent(contentPendingIntent)
-
-            .setCustomContentView(smallRv)
-            .setCustomBigContentView(bigRv)
-
-            .setShowWhen(false)
+            .setContentIntent(openApp)
+            .setCustomContentView(small)
+            .setCustomBigContentView(big)
             .setOnlyAlertOnce(true)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setOngoing(isPlaying)
             .build()
     }
 
+    private fun playPendingIntent() =
+        PendingIntent.getBroadcast(
+            this, 2,
+            Intent(if (isPlaying) MusicAction.ACTION_PAUSE else MusicAction.ACTION_PLAY)
+                .setPackage(packageName),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+    private fun prevPendingIntent() =
+        PendingIntent.getBroadcast(
+            this, 1,
+            Intent(MusicAction.ACTION_PREV).setPackage(packageName),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+    private fun nextPendingIntent() =
+        PendingIntent.getBroadcast(
+            this, 3,
+            Intent(MusicAction.ACTION_NEXT).setPackage(packageName),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                CHANNEL_MUSIC_ID,
-                CHANNEL_MUSIC,
-                NotificationManager.IMPORTANCE_LOW
-            )
             getSystemService(NotificationManager::class.java)
-                .createNotificationChannel(channel)
+                .createNotificationChannel(
+                    NotificationChannel(
+                        CHANNEL_MUSIC_ID,
+                        CHANNEL_MUSIC,
+                        NotificationManager.IMPORTANCE_LOW
+                    )
+                )
         }
     }
 }

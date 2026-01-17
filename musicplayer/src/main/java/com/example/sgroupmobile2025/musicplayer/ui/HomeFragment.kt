@@ -27,6 +27,7 @@ class HomeFragment : Fragment() {
             putExtra(MusicAction.EXTRA_INDEX, index)
             setPackage(requireContext().packageName)
         }
+        updateData(index)
         requireContext().sendBroadcast(intent)
     }
 
@@ -81,6 +82,13 @@ class HomeFragment : Fragment() {
             }
         }
     }
+    fun updateData(index: Int){
+        val track = viewModel.tracks.value[index]
+        viewModel.updateArtist(track.artist.name)
+        viewModel.updateTitle(track.title)
+        viewModel.updatePlayState(true)
+        viewModel.updateImage(track.album.coverMedium)
+    }
 
     private fun sendPlaylistToService(list: List<Track>) {
         val intent = Intent(MusicAction.ACTION_SET_PLAYLIST).apply {
@@ -91,7 +99,6 @@ class HomeFragment : Fragment() {
             setPackage(requireContext().packageName)
         }
         requireContext().sendBroadcast(intent)
-        Log.e("dataaaaaa", "da gui nha")
     }
 
     private fun setUpRecyclerView() {

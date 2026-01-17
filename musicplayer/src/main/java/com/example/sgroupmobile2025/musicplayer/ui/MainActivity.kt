@@ -1,48 +1,80 @@
 package com.example.sgroupmobile2025.musicplayer.ui
 
 import android.annotation.SuppressLint
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.sgroupmobile2025.musicplayer.R
 import com.example.sgroupmobile2025.musicplayer.adapter.FragmentAdaper
-import com.example.sgroupmobile2025.musicplayer.constants.Constants.FRAGMENT_FAVOURITE
+import com.example.sgroupmobile2025.musicplayer.constants.Constants.FRAGMENT_DETAIL
 import com.example.sgroupmobile2025.musicplayer.constants.Constants.FRAGMENT_HOME
 import com.example.sgroupmobile2025.musicplayer.constants.MusicAction
 import com.example.sgroupmobile2025.musicplayer.databinding.ActivityMainBinding
+import com.example.sgroupmobile2025.musicplayer.viewmodel.MusicViewModel
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private var isPlaying = false
-    private var currentTitle: String? = null
-    private var currentArtist: String? = null
-    private var currentImage: String? = null
+    private val viewModel: MusicViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
+
         viewCompat()
         initView()
         setupMiniPlayer()
+        observeMiniPlayer()
+        observePageChange()
     }
 
+    private fun initView() {
+        binding.viewPager.adapter = FragmentAdaper(this)
+        binding.viewPager.isUserInputEnabled = false
+        TabLayoutMediator(
+            binding.tabLayout,
+            binding.viewPager
+        ) { tab, position ->
+            when (position) {
+                FRAGMENT_HOME -> tab.icon = getDrawable(R.drawable.ic_home)
+                FRAGMENT_DETAIL -> tab.icon = getDrawable(R.drawable.ic_play)
+            }
+        }.attach()
+    }
+
+    private fun observePageChange() {
+        binding.viewPager.registerOnPageChangeCallback(
+            object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    updateMiniPlayerVisibility()
+                }
+            }
+        )
+    }
 
     private fun setupMiniPlayer() {
-
         binding.miniPlayer.visibility = View.GONE
 
         binding.btnPlay.setOnClickListener {
             sendAction(
-                if (isPlaying)
+                if (viewModel.isPlay.value)
                     MusicAction.ACTION_PAUSE
                 else
                     MusicAction.ACTION_PLAY
@@ -51,28 +83,68 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnClose.setOnClickListener {
             sendAction(MusicAction.ACTION_STOP)
-            binding.miniPlayer.visibility = View.GONE
+            updateMiniPlayerVisibility(forceHide = true)
         }
 
         binding.miniPlayer.setOnClickListener {
-            val intent = Intent(this, DetailActivity::class.java).apply {
-                putExtra(MusicAction.EXTRA_TITLE, currentTitle)
-                putExtra(MusicAction.EXTRA_ARTIST, currentArtist)
-                putExtra(MusicAction.EXTRA_IMAGE, currentImage)
-                putExtra(MusicAction.EXTRA_IS_PLAYING, isPlaying)
+            binding.viewPager.currentItem = FRAGMENT_DETAIL
+        }
+    }
+
+    private fun updateMiniPlayerVisibility(forceHide: Boolean = false) {
+        val hasMusic = viewModel.currentTitle.value.isNotEmpty()
+        val isDetail = binding.viewPager.currentItem == FRAGMENT_DETAIL
+
+        binding.miniPlayer.visibility =
+            if (!forceHide && hasMusic && !isDetail)
+                View.VISIBLE
+            else
+                View.GONE
+    }
+
+    private fun observeMiniPlayer() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+
+                launch {
+                    viewModel.currentTitle.collect { title ->
+                        if (title.isNotEmpty()) {
+                            binding.tvSongName.text = title
+                            updateMiniPlayerVisibility()
+                        }
+                    }
+                }
+
+                launch {
+                    viewModel.currentArtist.collect { artist ->
+                        binding.tvArtist.text = artist
+                    }
+                }
+
+                launch {
+                    viewModel.currentImage.collect { image ->
+                        if (image.isNotEmpty()) {
+                            Glide.with(binding.root)
+                                .load(image)
+                                .placeholder(R.drawable.ic_music)
+                                .into(binding.imgSong)
+                        }
+                    }
+                }
+
+                launch {
+                    viewModel.isPlay.collect { isPlaying ->
+                        binding.btnPlay.setImageResource(
+                            if (isPlaying)
+                                R.drawable.ic_pause
+                            else
+                                R.drawable.ic_play
+                        )
+                    }
+                }
             }
-            startActivity(intent)
         }
     }
-
-
-    private fun sendAction(action: String) {
-        val intent = Intent(action).apply {
-            setPackage(packageName)
-        }
-        sendBroadcast(intent)
-    }
-
 
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     override fun onStart() {
@@ -94,38 +166,30 @@ class MainActivity : AppCompatActivity() {
     private val uiReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
 
-            currentTitle = intent?.getStringExtra(MusicAction.EXTRA_TITLE)
-            currentArtist = intent?.getStringExtra(MusicAction.EXTRA_ARTIST)
-            currentImage = intent?.getStringExtra(MusicAction.EXTRA_IMAGE)
+            intent?.getStringExtra(MusicAction.EXTRA_TITLE)
+                ?.let { viewModel.updateTitle(it) }
 
-            isPlaying = intent?.getBooleanExtra(
+            intent?.getStringExtra(MusicAction.EXTRA_ARTIST)
+                ?.let { viewModel.updateArtist(it) }
+
+            intent?.getStringExtra(MusicAction.EXTRA_IMAGE)
+                ?.let { viewModel.updateImage(it) }
+
+            val isPlaying = intent?.getBooleanExtra(
                 MusicAction.EXTRA_IS_PLAYING,
                 false
             ) ?: false
 
-            if (!currentTitle.isNullOrEmpty()) {
-                binding.miniPlayer.visibility = View.VISIBLE
-                binding.tvSongName.text = currentTitle
-                binding.tvArtist.text = currentArtist ?: ""
-            }
-
-            if (!currentImage.isNullOrEmpty()) {
-                Glide.with(binding.root)
-                    .load(currentImage)
-                    .placeholder(R.drawable.ic_music)
-                    .into(binding.imgSong)
-            }
-
-            binding.btnPlay.setImageResource(
-                if (isPlaying)
-                    R.drawable.ic_pause
-                else
-                    R.drawable.ic_play
-            )
+            viewModel.updatePlayState(isPlaying)
         }
-
     }
 
+    private fun sendAction(action: String) {
+        val intent = Intent(action).apply {
+            setPackage(packageName)
+        }
+        sendBroadcast(intent)
+    }
 
     private fun viewCompat() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
@@ -138,25 +202,5 @@ class MainActivity : AppCompatActivity() {
             )
             insets
         }
-    }
-
-    private fun initView() {
-        binding.viewPager.adapter = FragmentAdaper(this)
-        TabLayoutMediator(
-            binding.tabLayout,
-            binding.viewPager
-        ) { tab, position ->
-            when (position) {
-                FRAGMENT_HOME -> {
-                    tab.text = "Home"
-                    tab.icon = getDrawable(R.drawable.ic_home)
-                }
-
-                FRAGMENT_FAVOURITE -> {
-                    tab.text = "Favourite"
-                    tab.icon = getDrawable(R.drawable.ic_love)
-                }
-            }
-        }.attach()
     }
 }

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/background_color"
     tools:context=".ui.MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
@@ -27,7 +27,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background"
+            android:background="#181829"
             android:padding="8dp">
 
             <ImageView
@@ -49,7 +49,7 @@
                 android:text="Tên bài hát"
                 android:textStyle="bold"
                 android:textSize="14sp"
-                android:textColor="#222222"
+                android:textColor="@color/white"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:layout_marginStart="8dp"
@@ -76,7 +76,7 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:src="@drawable/ic_play"
-                android:background="@android:color/transparent"
+                android:background="@drawable/bg_circle_green"
                 app:layout_constraintEnd_toStartOf="@id/btn_close"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
@@ -97,7 +97,8 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:background="#24242E"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

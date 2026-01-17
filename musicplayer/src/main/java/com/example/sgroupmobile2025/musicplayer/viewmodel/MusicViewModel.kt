@@ -21,9 +21,34 @@ class MusicViewModel : ViewModel() {
     private val _artists = MutableStateFlow<List<Artist>>(emptyList())
     val artists: StateFlow<List<Artist>> = _artists
 
-
     private val _detailTracks = MutableStateFlow<List<Track>>(emptyList())
     val detailTracks: StateFlow<List<Track>> = _detailTracks
+
+    private val _currentTitle = MutableStateFlow<String>("")
+    val currentTitle: StateFlow<String> = _currentTitle
+    private val _currentArtist = MutableStateFlow<String>("")
+    val currentArtist: StateFlow<String> = _currentArtist
+
+    private val _isPlay = MutableStateFlow<Boolean>(false)
+    val isPlay: StateFlow<Boolean> = _isPlay
+
+    private val _currentImage = MutableStateFlow<String>("")
+    val currentImage = _currentImage
+
+    fun updateTitle(newTitle: String){
+        _currentTitle.value = newTitle
+    }
+    fun updateArtist(newArtist: String) {
+        _currentArtist.value = newArtist
+    }
+
+    fun updatePlayState(isPlaying: Boolean) {
+        _isPlay.value = isPlaying
+    }
+
+    fun updateImage(newImg: String){
+        _currentImage.value = newImg
+    }
 
 
     fun loadHomeData() {
