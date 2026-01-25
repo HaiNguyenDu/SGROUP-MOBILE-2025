@@ -23,4 +23,5 @@ rootProject.name = "SgroupMobile2025"
 include(":app")
 include(":medialoader")
 include(":musicplayer")
-include(":app:canvas")
+include(":canvas")
+include(":myapplication")

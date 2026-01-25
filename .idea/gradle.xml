@@ -11,9 +11,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/app/canvas" />
+            <option value="$PROJECT_DIR$/canvas" />
             <option value="$PROJECT_DIR$/medialoader" />
             <option value="$PROJECT_DIR$/musicplayer" />
+            <option value="$PROJECT_DIR$/myapplication" />
           </set>
         </option>
       </GradleProjectSettings>

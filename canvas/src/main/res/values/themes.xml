@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Canvas" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#222222</item>
+        <item name="colorPrimaryVariant">#000000</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <item name="colorSecondary">#FF9800</item>
+        <item name="colorOnSecondary">#000000</item>
+
+        <!-- Fullscreen canvas -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+    </style>
+
+</resources>
