@@ -83,7 +83,6 @@ class MainActivity : AppCompatActivity() {
             adjustVisible = false
             binding.adjustPanel.visibility = View.GONE
             binding.drawView.changePaintTool(item.type)
-            adapter.setSelected(position)
         }
 
         binding.rvTools.apply {

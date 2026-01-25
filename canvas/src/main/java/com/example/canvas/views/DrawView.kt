@@ -99,7 +99,6 @@ class DrawView(context: Context, atr: AttributeSet): View(context, atr) {
     fun setImageBitmap(bitmap: Bitmap) {
         clearCanvas()
         baseImage = bitmap
-        Log.e("dataaaaa", "den day")
 
         val scaleX = width.toFloat() / bitmap.width
         val scaleY = height.toFloat() / bitmap.height
@@ -120,7 +119,7 @@ class DrawView(context: Context, atr: AttributeSet): View(context, atr) {
 
         this.bitmap.eraseColor(Color.TRANSPARENT)
         bufferCanvas.drawBitmap(scaledBitmap, left, top, null)
-
+        reBuildBitmap(backgroundColor)
         invalidate()
     }
 

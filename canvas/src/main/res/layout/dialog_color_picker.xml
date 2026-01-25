@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="20dp"
+    android:clipToOutline="true"
     android:background="@drawable/bg_dialog_round">
 
     <TextView
@@ -39,6 +40,7 @@
             android:id="@+id/viewColorPreview"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:clipToOutline="true"
             android:background="@drawable/bg_circle_color"
             android:elevation="2dp"/>
 
