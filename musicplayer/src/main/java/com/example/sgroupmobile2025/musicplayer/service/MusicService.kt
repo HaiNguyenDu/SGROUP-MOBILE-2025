@@ -95,7 +95,6 @@ class MusicService : Service() {
             currentArtist = artist
             currentImage = imageUrl
             isPlaying = true
-
             startProgress()
             showNotification(title, artist, imageUrl)
             updateUI(title, artist, imageUrl)
@@ -152,7 +151,6 @@ class MusicService : Service() {
         playByIndex(index)
     }
 
-
     private fun startProgress() {
         stopProgress()
         progressRunnable = object : Runnable {
@@ -176,7 +174,6 @@ class MusicService : Service() {
         progressRunnable?.let { handler.removeCallbacks(it) }
         progressRunnable = null
     }
-
 
     private val actionReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
