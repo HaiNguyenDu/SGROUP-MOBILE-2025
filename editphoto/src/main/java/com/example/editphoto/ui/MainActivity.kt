@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Gravity
 import android.view.View
-import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity

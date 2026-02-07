@@ -40,7 +40,6 @@ class TextSticker(
         updateBounds()
         canvas.withMatrix(matrix) {
             drawText(text, 0f, textBounds.height(), textPaint)
-
         }
     }
     fun setTypeface(tf: Typeface) {
