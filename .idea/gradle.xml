@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/editphoto" />
             <option value="$PROJECT_DIR$/medialoader" />
             <option value="$PROJECT_DIR$/musicplayer" />
           </set>

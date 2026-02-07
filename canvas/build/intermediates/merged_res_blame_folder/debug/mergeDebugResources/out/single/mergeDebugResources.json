@@ -1,0 +1,138 @@
+[
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_error.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_error.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_custom_seekbar_thumb.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\custom_seekbar_thumb.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\anim_slide_up.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\anim\\slide_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_undo.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_undo.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_close.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_close.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\layout_dialog_color_picker.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\layout\\dialog_color_picker.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_eraser.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\eraser.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_undo_black.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_undo_black.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_bg_ios_panel.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\bg_ios_panel.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_bg_dialog_round.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\bg_dialog_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_pen.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\pen.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_add.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_add.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\layout_item_pen.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\layout\\item_pen.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_redo.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_redo.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_redo_black.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_redo_black.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_bg_circle_color.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\bg_circle_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_more.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_more.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_crayon.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\crayon.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_highlighter.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\highlighter.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_redo.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_redo.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_custom_seekbar_track.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\custom_seekbar_track.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_pencil.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\pencil.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_check.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_check.xml"
+    },
+    {
+        "merged": "com.example.canvas-debug-36:/layout_dialog_color_picker.xml.flat",
+        "source": "com.example.canvas-main-38:/layout/dialog_color_picker.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_download.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_download.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\layout_item_color_cell.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\layout\\item_color_cell.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_bg_square_color.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\bg_square_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_more.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_more.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_plus.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_plus.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_save.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_save.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\anim_anim_save_success.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\anim\\anim_save_success.xml"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_ic_undo.png.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\ic_undo.png"
+    },
+    {
+        "merged": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-debug-36:\\drawable_bg_pen_selected.xml.flat",
+        "source": "C:\\Users\\THIS PC\\.gradle\\daemon\\8.13\\com.example.canvas-main-38:\\drawable\\bg_pen_selected.xml"
+    }
+]

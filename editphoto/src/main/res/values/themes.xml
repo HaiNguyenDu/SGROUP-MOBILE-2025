@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.EditPhoto" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFD700</item>
+        <item name="colorPrimaryVariant">#B8860B</item>
+        <item name="colorOnPrimary">#000000</item>
+
+        <item name="colorSecondary">#FFD700</item>
+        <item name="colorOnSecondary">#000000</item>
+
+        <item name="android:statusBarColor">#000000</item>
+    </style>
+</resources>

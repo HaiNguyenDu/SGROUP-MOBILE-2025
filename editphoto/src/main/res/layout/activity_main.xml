@@ -1,0 +1,133 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050505">
+
+    <com.example.editphoto.view.EditorView
+        android:id="@+id/editorView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_gradient_top"
+        android:elevation="4dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_circle_ripple"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"
+            app:tint="#FFFFFF"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDITOR"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:letterSpacing="0.2"
+            android:textSize="16sp"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/btnSave"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_circle_ripple"
+            android:src="@drawable/ic_download"
+            android:padding="10dp"
+            app:tint="#FFD700"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <HorizontalScrollView
+            android:id="@+id/selectionPanel"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:visibility="gone"
+            android:background="@drawable/bg_panel_glass"
+            android:scrollbars="none"
+            android:elevation="10dp">
+
+            <LinearLayout
+                android:id="@+id/selectionContainer"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"/>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:id="@+id/mainToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="12dp"
+            android:gravity="center"
+            android:background="#1A1A1A"
+            android:elevation="12dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSticker"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sticker"
+                android:textAllCaps="false"
+                android:textColor="#E0E0E0"
+                app:icon="@android:drawable/ic_menu_gallery"
+                app:iconGravity="top"
+                app:iconTint="#FFD700"
+                app:iconSize="28dp"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="#333333"
+                android:layout_marginHorizontal="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnText"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Text"
+                android:textAllCaps="false"
+                android:textColor="#E0E0E0"
+                app:icon="@android:drawable/ic_menu_edit"
+                app:iconGravity="top"
+                app:iconTint="#FFD700"
+                app:iconSize="28dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
