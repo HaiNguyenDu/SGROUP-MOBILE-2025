@@ -53,7 +53,9 @@ class CameraActivity : AppCompatActivity() {
         binding.btnGrid.setOnClickListener {
             isGridOn = !isGridOn
             binding.cameraOverlay.setGrid(isGridOn)
-            binding.tvGrid.setImageResource(R.drawable.ic_grid_off)
+            if(isGridOn)
+                binding.tvGrid.setImageResource(R.drawable.ic_grid_on)
+            else binding.tvGrid.setImageResource(R.drawable.ic_grid_off)
         }
 
         binding.btnSize.setOnClickListener {
